@@ -18,6 +18,9 @@ Elke valide zet is mogelijk en wordt hierbij aangegeven als goed of fout met bij
 
 ![visulisatie](https://user-images.githubusercontent.com/36193067/40915619-1241fdc8-67fd-11e8-8c28-a6931369b5cc.png)
 
+## Extra
+Het hoofddoel van deze app is het maken van schaaklessen. Dit is slechts een hoofddoel. De app kan worden uitgebreid met vele features. Zo behoort een schaakklok (te gebruiken voor een fysiek potje schaak) tot de mogelijkheden. Andere ideëen zijn de mogelijkheid voor het toevoegen van lessen door gebruikers of 
+
 
 ## Firebase
 Hierin wordt de data van een gebuiker opgeslagen. De schaaklessen die zijn doorlopen, de tijd hiervan en de fequentie wordt hierbij bewaard. 
@@ -31,4 +34,5 @@ Deze app heeft als doel een app als chess.com (spelen partijen populair) te onde
 ## Moeilijkste gedeelte app
 Het efficiënt manipuleren/aanpassen van de 64 schaakvelden wordt de grootste uitdaging. Hierin moeten namelijk de stukken op de goede plek staan. Dit kost ontzettend veel code. Het wordt een mikpunt om deze data zo compacct mogelijk op te slaan en aan te passen.
 
+![chesslessons](https://user-images.githubusercontent.com/36193067/40920530-22850f12-680d-11e8-93d6-1454798f9c6b.png)
 
