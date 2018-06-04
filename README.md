@@ -28,4 +28,7 @@ Men kan haar chess.com accountnaam invoeren. Dit is de grootste schaakapp voor o
 ## Combinatie chess.com
 Deze app heeft als doel een app als chess.com (spelen partijen populair) te ondersteunen met trainingen en lessen. Deze worden in beperkte mate op chess.com aangeboden aangezien dit vooral betalend is maar voor zeer sterke tegenstanders. Ook onderscheid mijn app zich door uitleg aan te bieden voor onderwerpen zoals dubbele aanval, penning etc.
 
+## Moeilijkste gedeelte app
+Het efficiënt manipuleren/aanpassen van de 64 schaakvelden wordt de grootste uitdaging. Hierin moeten namelijk de stukken op de goede plek staan. Dit kost ontzettend veel code. Het wordt een mikpunt om deze data zo compacct mogelijk op te slaan en aan te passen.
+
 
