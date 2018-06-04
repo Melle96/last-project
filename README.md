@@ -19,4 +19,13 @@ Elke valide zet is mogelijk en wordt hierbij aangegeven als goed of fout met bij
 ![visulisatie](https://user-images.githubusercontent.com/36193067/40915619-1241fdc8-67fd-11e8-8c28-a6931369b5cc.png)
 
 
-## Main features
+## Firebase
+Hierin wordt de data van een gebuiker opgeslagen. De schaaklessen die zijn doorlopen, de tijd hiervan en de fequentie wordt hierbij bewaard. 
+
+## API
+Men kan haar chess.com accountnaam invoeren. Dit is de grootste schaakapp voor online partijen. Hierbij wordt de rating, het aantal verloren, gewonnen en remise partijen weergeven. Ook worden er links achtergelaten voor de 'beste'games.
+
+## Combinatie chess.com
+Deze app heeft als doel een app als chess.com (spelen partijen populair) te ondersteunen met trainingen en lessen. Deze worden in beperkte mate op chess.com aangeboden aangezien dit vooral betalend is maar voor zeer sterke tegenstanders. Ook onderscheid mijn app zich door uitleg aan te bieden voor onderwerpen zoals dubbele aanval, penning etc.
+
+
