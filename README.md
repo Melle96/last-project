@@ -12,22 +12,24 @@ Men vergroot de kans om te winnen door beter te worden. Maar wat is nu eigenlijk
 # De app
 Deze app heeft als voornaamste doel om schakers te leren/ beter te maken in blindschaak door middel van visualisatie spelletjes.
 
-## Schaakvisulatietrainer
+## Puzzel
+In de puzzel krijgt de schaker een beginstelling te zien. Deze wordt verkegen door middel van https://api.chess.com/pub/puzzle/random. Na een aantal seconden verwijnt het bord. De gebruiker wordt geacht het bord te kennen en de puzzel op te lossen door de juiste zetten in te voeren.
+
+
+## (Extra) Schaakvisulatietrainer
 Men start bij de beginstelling van het schaakspel. Men selecteert een x aantal zetten. Het bord verdwijnt en er worden x zetten random door de computer uitgevoerd. Het bord zonder stukken verschijnt. Nu is het de taak om de locaties van de stukken aan te tikken. Bij elk goed antwoord worden punten uitgereikt. Bij ieder fout antwoord worden punten in mindering gebracht.
 
 ![visualisatie2](https://user-images.githubusercontent.com/36193067/40926531-b6ba7e1a-681c-11e8-80f4-d3749b655e5e.png)
-
-## Extra
-Het hoofddoel van deze app is het maken van de schaakvisulatietrainer. Dit is slechts een hoofddoel. De app kan worden uitgebreid met een game tegen de computer met daarin bijvoorbeeld de mogelijkheid om drie maal de stelling van het bord voor een aantal seconden terug te zien.
 
 ## Firebase
 Hierin wordt de data van een gebuiker opgeslagen. De punten die toegekend zijn aan een gebruiker worden hierin opgeslagen. Ook kunnen gebruikers zich via hier registeren en aanmelden.
 
 ## API
-Men kan haar chess.com accountnaam invoeren. Dit is de grootste schaakapp voor online partijen. Hierbij wordt de rating weergeven. Deze rating kan gebruikt worden door te vergelijken met punten in blindschaak en rating in gewoon schaak. 
+Schaakpuzzels worden verkregen via de volgende API https://api.chess.com/pub/puzzle/random. Ook de juiste zetten die resulteren in een oplossing van de puzzel worden hierbij verkregen. 
 
 ## Moeilijkste gedeelte app
-Het invoeren van alle schaakregels is een enorme uitdaging. Dit is noodzakelijk om een computer random zetten te laten doen en eventueel een game te creëeren. Vooral het implementeren van regels voor de rokade zijn super moeilijk.
+Het omschakelen van de Forsyth–Edwards Notation naar een visualisatie op het bord is lastig. Zo moet 3r3k/pbbr4/1p4Q1/2p4p/7N/P1p3P1/BP3PP1/2R3K1 w KQkq - 0 1 vertaalt worden naar een bord.
+Verder is het invoeren van alle schaakregels is een enorme uitdaging. Dit is noodzakelijk om een computer random zetten te laten doen en eventueel een game te creëeren. Vooral het implementeren van regels voor de rokade zijn super moeilijk.
 
 ![chesslessons](https://user-images.githubusercontent.com/36193067/40920530-22850f12-680d-11e8-93d6-1454798f9c6b.png)
 
