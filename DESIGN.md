@@ -36,7 +36,7 @@ De API die wordt gebruikt is van chess.com en creëert een random schaakpuzzel. 
 
 {"title":"Queen Domination","comments":"","url":"https://www.chess.com/forum/view/daily-puzzles/12272009---queen-domination","publish_time":1261900800,"fen":"3B2k1/pp5p/6q1/1PRp4/4pK2/P7/B4PP1/8 b - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3B2k1/pp5p/6q1/1PRp4/4pK2/P7/B4PP1/8 b - - 0 1\"]\r\n\r\n1...Qd6+ 2. Kf5 Qxc5\r\n*","image":"https://www.chess.com/dynboard?fen=3B2k1/pp5p/6q1/1PRp4/4pK2/P7/B4PP1/8%20b%20-%20-%200%201&size=2"}
 
-In deze informatie weergeeft fen (Forsyth-Edwards Notation) de beginstelling van de puzzel. Vervolgens geeft 1...Qd6+ 2. Kf5 Qxc5 de oplossing van de puzzel. Door deze informatie goed te gebruiken en te vertalen kan een bordvisualisatie van de beginstelling worden gemaakt. Ook de notatie moet goed worden vertaald zodat de gebruiker alleen maar hoeft te klikken en niet hoeft te typen om een juist antwoord te geven.
+In deze informatie weergeeft fen (Forsyth-Edwards Notation) de beginstelling van de puzzel. Vervolgens geeft 1...Qd6+ 2. Kf5 Qxc5 de oplossing van de puzzel. Door deze informatie goed te gebruiken en te vertalen kan een bordvisualisatie van de beginstelling worden gemaakt. Ook de notatie moet goed worden vertaald zodat de gebruiker alleen maar hoeft te klikken op een stuk, cijfer,letter en niet hoeft te typen om een juist antwoord te geven.
 
 # Firebase
 Firebase wordt gebuikt om de gegevens van de gebruikers op te slaan. Hierbij wordt gedoeld op de totale puzzeloplostijd, aantal puzzels en percentage goed/fout. 
