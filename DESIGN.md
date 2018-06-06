@@ -29,7 +29,7 @@ Er wordt hier een notatie neergezet van hoe het bord staat. Ook kan men kiezen v
 
 In de schaakpuzzel is de gehele tijd een klok aanwezig. Op die manier weet de gebuiker precies hoe lang deze over de opgave doet.
 
-![visualisatie5](https://user-images.githubusercontent.com/36193067/41025876-5c0e3abc-6973-11e8-9fc0-2b566ea6c4b3.png)
+![visualisatie5](https://user-images.githubusercontent.com/36193067/41029638-71d1ca18-697c-11e8-9a43-be971ab85ce8.png)
 
 # API
 De API die wordt gebruikt is van chess.com en creëert een random schaakpuzzel. De link die daarbij hoort is als volgt:  https://api.chess.com/pub/puzzle/random . Deze link weergeeft de volgende JSON informatie: 
@@ -38,7 +38,8 @@ De API die wordt gebruikt is van chess.com en creëert een random schaakpuzzel. 
 
 In deze informatie weergeeft fen (Forsyth-Edwards Notation) de beginstelling van de puzzel. Vervolgens geeft 1...Qd6+ 2. Kf5 Qxc5 de oplossing van de puzzel. Door deze informatie goed te gebruiken en te vertalen kan een bordvisualisatie van de beginstelling worden gemaakt. Ook de notatie moet goed worden vertaald zodat de gebruiker alleen maar hoeft te klikken en niet hoeft te typen om een juist antwoord te geven.
 
-# API
+# Firebase
+Firebase wordt gebuikt om de gegevens van de gebruikers op te slaan. Hierbij wordt gedoeld op de totale puzzeloplostijd, aantal puzzels en percentage goed/fout. 
 
 
 ![chesslessons](https://user-images.githubusercontent.com/36193067/40920530-22850f12-680d-11e8-93d6-1454798f9c6b.png)
