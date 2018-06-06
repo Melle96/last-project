@@ -29,7 +29,7 @@ Er wordt hier een notatie neergezet van hoe het bord staat. Ook kan men kiezen v
 
 In de schaakpuzzel is de gehele tijd een klok aanwezig. Op die manier weet de gebuiker precies hoe lang deze over de opgave doet.
 
-![visualisatie2](https://user-images.githubusercontent.com/36193067/40926531-b6ba7e1a-681c-11e8-80f4-d3749b655e5e.png)
+![visualisatie5](https://user-images.githubusercontent.com/36193067/41025876-5c0e3abc-6973-11e8-9fc0-2b566ea6c4b3.png)
 
 ![chesslessons](https://user-images.githubusercontent.com/36193067/40920530-22850f12-680d-11e8-93d6-1454798f9c6b.png)
 
