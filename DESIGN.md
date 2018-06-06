@@ -41,6 +41,10 @@ In deze informatie weergeeft fen (Forsyth-Edwards Notation) de beginstelling van
 # Firebase
 Firebase wordt gebuikt om de gegevens van de gebruikers op te slaan. Hierbij wordt gedoeld op de totale puzzeloplostijd, aantal puzzels en percentage goed/fout. 
 
+# Functies
+-fen omzetten naar beginstelling
+-correcte zetten vertalen voor gebruiker
+-firebase: toevoegen, aanpassen, registreren, aanmelden
 
 ![chesslessons](https://user-images.githubusercontent.com/36193067/40920530-22850f12-680d-11e8-93d6-1454798f9c6b.png)
 
