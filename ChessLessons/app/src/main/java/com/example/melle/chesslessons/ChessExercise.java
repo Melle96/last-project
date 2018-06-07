@@ -8,13 +8,13 @@ import android.widget.ImageView;
 
 import static java.lang.Integer.parseInt;
 
-public class ChessExercise extends AppCompatActivity {
+    public class ChessExercise extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chess_exercise);
-    }
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_chess_exercise);
+        }
 
     public void getPuzzleNow(View view) {
         String coordinates = "";
@@ -23,17 +23,25 @@ public class ChessExercise extends AppCompatActivity {
         Log.d("array", array[2]);
         int arrayLength = array.length;
         Log.d("length", String.valueOf(arrayLength));
+        Log.d("coordinates", coordinates + "hoi");
 
         for (int i = 1; i < arrayLength; i++) {
-            if (array[i] == "r"){
+            Log.d("i", String.valueOf(i));
+            Log.d("array", array[i]);
+
+            if (array[i].toString() == "r"){
                 coordinates = coordinates + "blackrook";
+                Log.d("hier moet ik nu zitten", "hihih");
+                // new String("test").equals("test")
             }
 
-            else if (array[i] == "n"){
+            else if (fed.substring(i, i) ==  "n"){
+
                 coordinates = coordinates + "blackknight";
             }
 
-            else if (array[i] == "b"){
+            else if (fed.substring(i, i) == "b"){
+                Log.d("jaaaa", "jaaaaa");
                 coordinates = coordinates + "blackbishop";
             }
 
@@ -73,8 +81,10 @@ public class ChessExercise extends AppCompatActivity {
                 coordinates = coordinates + "whitepawn";
             }
 
-            else if (array[i] == "1") {
+            else if (array[i] == "1" || array[i] == "2" || array[i] == "3" || array[i] == "4" ||
+                    array[i] == "5" || array[i] == "6" || array[i] == "7" || array[i] == "8")
 
+            {
                 for (int j = 0; j < parseInt(array[i]); j++){
                     coordinates = coordinates + "0";
                 }
@@ -82,8 +92,9 @@ public class ChessExercise extends AppCompatActivity {
 
         }
 
+        Log.d("hier", "hier");
         Log.d("coordinates", coordinates);
-
+        Log.d("hier2", fed);
 
 //        for (int i = 0; i < 64; i++) {
 //            int column = i%8 + 1;
