@@ -5,5 +5,5 @@ Tot nu toe heb ik de read.me en design.me gemaakt. Ook ben ik al begonnen met he
 ![schaakbord](https://user-images.githubusercontent.com/36193067/41087605-696ace3a-6a3d-11e8-8a43-584ad7cff8cb.png)
 ![schaakbord_code](https://user-images.githubusercontent.com/36193067/41087606-69883ad8-6a3d-11e8-8fcd-8e8862540005.png)
 
-Mijn volgende doel is het inladen van de beginstelling: 
+Mijn volgende doel is het inladen van de beginstelling: 3B2k1/pp5p/6q1/1PRp4/4pK2/P7/B4PP1/8 b - - 0 1
 
