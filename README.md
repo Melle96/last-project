@@ -15,7 +15,7 @@ Deze app heeft als voornaamste doel om schakers te leren/ beter te maken in blin
 ## Puzzel
 In de puzzel krijgt de schaker een beginstelling te zien. Deze wordt verkegen door middel van https://api.chess.com/pub/puzzle/random. Na een aantal seconden verwijnt het bord. De gebruiker wordt geacht het bord te kennen en de puzzel op te lossen door de juiste zetten in te voeren.
 
-![visualisatie3](https://user-images.githubusercontent.com/36193067/40972579-78a4de0e-68c1-11e8-81bb-1b6ee681f0a2.png)
+![visualisatie5](https://user-images.githubusercontent.com/36193067/41029638-71d1ca18-697c-11e8-9a43-be971ab85ce8.png)
 
 ## (Extra) Schaakvisulatietrainer
 Men start bij de beginstelling van het schaakspel. Men selecteert een x aantal zetten. Het bord verdwijnt en er worden x zetten random door de computer uitgevoerd. Het bord zonder stukken verschijnt. Nu is het de taak om de locaties van de stukken aan te tikken. Bij elk goed antwoord worden punten uitgereikt. Bij ieder fout antwoord worden punten in mindering gebracht.
