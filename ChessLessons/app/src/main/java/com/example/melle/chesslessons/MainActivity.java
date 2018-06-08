@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -23,7 +24,13 @@ public class MainActivity extends AppCompatActivity implements GetPuzzle.Callbac
 
     @Override
     public void gotQuestions(JSONObject questions) {
+
         Log.d("blij", String.valueOf(questions));
+        try {
+            Log.d("blij2", questions.getString("pgn"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
