@@ -23,7 +23,8 @@ public class ChessExercise extends AppCompatActivity {
     }
 
     public void getPuzzleNow(View view) {
-        String fed = "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1";;
+        String fed = "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1";
+        ;
         String coordinates = fedToString(fed);
         Log.d("coordinates", coordinates);
         Log.d("coordinates_length", String.valueOf(coordinates.length()));
@@ -76,9 +77,10 @@ public class ChessExercise extends AppCompatActivity {
     }
 
     public void doezet(View view) {
+        //String fed = "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1";
         String fed = "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1";
         String huidigenotatie = fedToString(fed);
-        String zet = "Be8";
+        String zet = "Rf1";
 
 
         if (zet.length() == 3) {
@@ -88,126 +90,73 @@ public class ChessExercise extends AppCompatActivity {
                 List<Integer> myList = new ArrayList<Integer>();
                 int counter = 0;
 
-
+                // itereren over hele schaakbord
                 for (int i = 0; i < huidigenotatie.length(); i++) {
                     if (huidigenotatie.charAt(i) == 'c') {
                         counter++;
                         myList.add(i);
                     }
                 }
-                Log.d("positions", String.valueOf(myList.get(0)));
-                Log.d("counter", String.valueOf(counter));
+
                 if (counter == 1) {
-                    int position = Integer.parseInt(String.valueOf(myList.get(0)));
-                    huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
-                    char character = zet.charAt(1);
-                    int column = (int) Character.toLowerCase(character) - 97;
-                    Log.d("column", String.valueOf(column));
-                    int row = 8 - Integer.parseInt(String.valueOf(zet.charAt(2)));
-                    Log.d("row", String.valueOf(row));
-                    int counter2 = 8 * row + column;
-                    Log.d("counter", String.valueOf(counter2));
-                    huidigenotatie = huidigenotatie.substring(0, counter2) + 'c' + huidigenotatie.substring(counter2+1);
-                    createbord(huidigenotatie);
+                    moveSinglePiece(huidigenotatie, zet, String.valueOf(myList.get(0)), "c");
+
+                } else {
+                    moveBishopWithTwins(counter, zet, huidigenotatie, myList);
 
                 }
-
-                else {
-                    //for (int i = 0; i < counter; i++) {
-                    int index = 0;
-                    int i = 0;
-                    while (index != 1 && i != counter){
-                        Log.d("hier1", "hier1");
-                        int position = myList.get(0);
-                        int column1 = position % 8;
-                        int row1 = 8 - (position / 8);
-                        Log.d("row1", String.valueOf(row1));
-                        char character = zet.charAt(1);
-                        int column2 = (int) Character.toLowerCase(character) - 97;
-                        int row2 = Integer.parseInt(String.valueOf(zet.charAt(2)));
-                        Log.d("row2", String.valueOf(row2));
-
-                        Log.d("test", String.valueOf(abs(column2 - column1)));
-                        Log.d("test2", String.valueOf(abs(row2 - row1)));
-                        if (abs(column2 - column1) == abs(row2 - row1)){
-                            int countt = abs(column2 - column1) - 1;
-                            int index2 = 0;
-                            int direction[] = new int[2];
-
-                            // richting loper bepalen
-                            if (column2 > column1) {
-                                direction[0] = 1;
-                            }
-                            else{
-                                direction[0] = -1;
-                            }
-                            if (row2 > row1){
-                                direction[1] = 1;
-                            }
-
-                            else {
-                                direction[1] = -1;
-                            }
-
-
-                            for (int h = 0; h < countt; h++) {
-                                Log.d("yeah", String.valueOf(h));
-                                int element1 = column1 + direction[0]*(h+1);
-                                Log.d("element1", String.valueOf(element1));
-                                int element2 = row1 + direction[1]*(h+1);
-                                Log.d("element2", String.valueOf(element2));
-
-                                int positionn = 8*(8-element2) + element1;
-                                Log.d("nu~!pos", String.valueOf(positionn));
-                                Log.d("jochem2", String.valueOf(huidigenotatie.charAt(positionn)));
-                                if (String.valueOf(huidigenotatie.charAt(positionn)).equals("0")){
-                                    Log.d("hier1234", "hier1234");
-                                    index2++;
-
-                                }
-
-                            }
-
-                            Log.d("index2", String.valueOf(index2));
-                            Log.d("countt", String.valueOf(countt));
-                            // alle velden leeg
-                            if (index2 == countt){
-                                // move is legaal moet gemaakt worden
-                                index = 1;
-                                Log.d("jajaja", "jjJj");
-
-
-                                int column = (int) Character.toLowerCase(character) - 97;
-                                Log.d("column", String.valueOf(column));
-                                int row = 8 - Integer.parseInt(String.valueOf(zet.charAt(2)));
-                                Log.d("row", String.valueOf(row));
-                                int counter2 = 8 * row + column;
-
-                                huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
-                                huidigenotatie = huidigenotatie.substring(0, counter2) + 'c' + huidigenotatie.substring(counter2+1);
-                                createbord(huidigenotatie);
-                                index = 1;
-                            }
-                        }
-                        i++;
-
-
-                    }
-
-                }
-
-                Log.d("counter", String.valueOf(counter));
-                huidigenotatie.indexOf('c');
 
             }
-        }
 
-        if (zet.length() == 4) {
 
+            // Toren
+            if (String.valueOf(zet.charAt(0)).equals("R")) {
+
+                List<Integer> myList = new ArrayList<Integer>();
+                int counter = 0;
+
+
+                for (int i = 0; i < huidigenotatie.length(); i++) {
+                    if (huidigenotatie.charAt(i) == 't') {
+                        counter++;
+                        myList.add(i);
+                    }
+                }
+
+                if (counter == 1) {
+                    moveSinglePiece(huidigenotatie, zet, String.valueOf(myList.get(0)), "t");
+
+                } else {
+                    moveRookWithTwins(counter, zet, huidigenotatie, myList);
+
+                }
+            }
+
+            // Dame
+            if (String.valueOf(zet.charAt(0)).equals("Q")) {
+
+                List<Integer> myList = new ArrayList<Integer>();
+                int counter = 0;
+
+
+                for (int i = 0; i < huidigenotatie.length(); i++) {
+                    if (huidigenotatie.charAt(i) == 's') {
+                        counter++;
+                        myList.add(i);
+                    }
+                }
+
+                if (counter == 1) {
+                    moveSinglePiece(huidigenotatie, zet, String.valueOf(myList.get(0)), "s");
+
+                }
+                else {
+                    moveQueenWithTwins(counter, zet, huidigenotatie, myList);
+
+                }
+            }
         }
-//            String[] array = fed.split("");
     }
-
 
     // maakt een overzichtelijkere string van FED-notatie
     public String fedToString(String fed) {
@@ -297,6 +246,269 @@ public class ChessExercise extends AppCompatActivity {
                 img.setImageResource(0);
                 ;
             }
+        }
+    }
+
+    // verplaatst een enkel stuk over het bord
+    public void moveSinglePiece(String huidigenotatie, String zet, String list, String piece){
+        int position = Integer.parseInt(list);
+        huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
+        char character = zet.charAt(1);
+        int column = (int) Character.toLowerCase(character) - 97;
+        Log.d("column", String.valueOf(column));
+        int row = 8 - Integer.parseInt(String.valueOf(zet.charAt(2)));
+        Log.d("row", String.valueOf(row));
+        int counter2 = 8 * row + column;
+        Log.d("counter", String.valueOf(counter2));
+        huidigenotatie = huidigenotatie.substring(0, counter2) + piece + huidigenotatie.substring(counter2+1);
+        createbord(huidigenotatie);
+
+    }
+
+    // verplaatst een loper
+    public void moveBishopWithTwins(int counter, String zet, String huidigenotatie, List<Integer> myList){
+        int index = 0;
+        int i = 0;
+        while (index != 1 && i != counter){
+            Log.d("hier1", "hier1");
+            int position = myList.get(i);
+            int column1 = position % 8;
+            int row1 = 8 - (position / 8);
+            Log.d("row1", String.valueOf(row1));
+            char character = zet.charAt(1);
+            int column2 = (int) Character.toLowerCase(character) - 97;
+            int row2 = Integer.parseInt(String.valueOf(zet.charAt(2)));
+            Log.d("row2", String.valueOf(row2));
+
+            Log.d("test", String.valueOf(abs(column2 - column1)));
+            Log.d("test2", String.valueOf(abs(row2 - row1)));
+            if (abs(column2 - column1) == abs(row2 - row1)){
+                int countt = abs(column2 - column1) - 1;
+                int index2 = 0;
+                int direction[] = new int[2];
+
+                // richting loper bepalen
+                if (column2 > column1) {
+                    direction[0] = 1;
+                }
+                else{
+                    direction[0] = -1;
+                }
+                if (row2 > row1){
+                    direction[1] = 1;
+                }
+
+                else {
+                    direction[1] = -1;
+                }
+
+
+                for (int h = 0; h < countt; h++) {
+                    Log.d("yeah", String.valueOf(h));
+                    int element1 = column1 + direction[0]*(h+1);
+                    Log.d("element1", String.valueOf(element1));
+                    int element2 = row1 + direction[1]*(h+1);
+                    Log.d("element2", String.valueOf(element2));
+
+                    int positionn = 8*(8-element2) + element1;
+                    Log.d("nu~!pos", String.valueOf(positionn));
+                    Log.d("jochem2", String.valueOf(huidigenotatie.charAt(positionn)));
+                    if (String.valueOf(huidigenotatie.charAt(positionn)).equals("0")){
+                        Log.d("hier1234", "hier1234");
+                        index2++;
+
+                    }
+
+                }
+
+                Log.d("index2", String.valueOf(index2));
+                Log.d("countt", String.valueOf(countt));
+                // alle velden leeg
+                if (index2 == countt){
+                    // move is legaal moet gemaakt worden
+                    index = 1;
+                    Log.d("jajaja", "jjJj");
+
+
+                    int column = (int) Character.toLowerCase(character) - 97;
+                    Log.d("column", String.valueOf(column));
+                    int row = 8 - Integer.parseInt(String.valueOf(zet.charAt(2)));
+                    Log.d("row", String.valueOf(row));
+                    int counter2 = 8 * row + column;
+
+                    huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
+                    huidigenotatie = huidigenotatie.substring(0, counter2) + 'c' + huidigenotatie.substring(counter2+1);
+                    createbord(huidigenotatie);
+                    index = 1;
+                }
+            }
+            i++;
+
+
+        }
+    }
+
+    // verplaatst een toren
+    public void moveRookWithTwins(int counter, String zet, String huidigenotatie, List<Integer> myList){
+        int index = 0;
+        int i = 0;
+        while (index != 1 && i != counter){
+            int position = myList.get(i);
+            int column1 = position % 8;
+            int row1 = 8 - (position / 8);
+
+            char character = zet.charAt(1);
+            int column2 = (int) Character.toLowerCase(character) - 97;
+            int row2 = Integer.parseInt(String.valueOf(zet.charAt(2)));
+
+            if (column2 == column1 || row2 == row1){
+                int countt;
+                if (column2 == column1){
+                    countt = abs(row2 - row1) - 1;
+                }
+                else {
+                    countt = abs(column2 - column1) - 1;
+                }
+
+                int index2 = 0;
+                int direction[] = new int[2];
+
+                // richting loper bepalen
+                if (column2 > column1) {
+                    direction[0] = 1;
+                }
+
+                else if (column2 < column1) {
+                    direction[0] = -1;
+                }
+
+                else{
+                    direction[0] = 0;
+                }
+
+                if (row2 > row1){
+                    direction[1] = 1;
+                }
+
+                else if (row2 < row1){
+                    direction[1] = -1;
+                }
+                else{
+                    direction[1] = 0;
+                }
+
+
+                for (int h = 0; h < countt; h++) {
+                    int element1 = column1 + direction[0]*(h+1);
+                    int element2 = row1 + direction[1]*(h+1);
+
+                    int positionn = 8*(8-element2) + element1;
+                    if (String.valueOf(huidigenotatie.charAt(positionn)).equals("0")){
+                        index2++;
+
+                    }
+
+                }
+
+                // alle velden leeg
+                if (index2 == countt){
+                    // move is legaal moet gemaakt worden
+                    index = 1;
+
+                    int column = (int) Character.toLowerCase(character) - 97;
+                    int row = 8 - Integer.parseInt(String.valueOf(zet.charAt(2)));
+                    int counter2 = 8 * row + column;
+
+                    huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
+                    huidigenotatie = huidigenotatie.substring(0, counter2) + 't' + huidigenotatie.substring(counter2+1);
+                    createbord(huidigenotatie);
+                }
+            }
+            i++;
+
+
+        }
+    }
+
+    // verplaatst een toren
+    public void moveQueenWithTwins(int counter, String zet, String huidigenotatie, List<Integer> myList){
+        int index = 0;
+        int i = 0;
+        while (index != 1 && i != counter){
+            int position = myList.get(i);
+            int column1 = position % 8;
+            int row1 = 8 - (position / 8);
+
+            char character = zet.charAt(1);
+            int column2 = (int) Character.toLowerCase(character) - 97;
+            int row2 = Integer.parseInt(String.valueOf(zet.charAt(2)));
+
+            if (column2 == column1 || row2 == row1){
+                int countt;
+                if (column2 == column1){
+                    countt = abs(row2 - row1) - 1;
+                }
+                else {
+                    countt = abs(column2 - column1) - 1;
+                }
+
+                int index2 = 0;
+                int direction[] = new int[2];
+
+                // richting dame bepalen
+                if (column2 > column1) {
+                    direction[0] = 1;
+                }
+
+                else if (column2 < column1) {
+                    direction[0] = -1;
+                }
+
+                else{
+                    direction[0] = 0;
+                }
+
+                if (row2 > row1){
+                    direction[1] = 1;
+                }
+
+                else if (row2 < row1){
+                    direction[1] = -1;
+                }
+                else{
+                    direction[1] = 0;
+                }
+
+
+                for (int h = 0; h < countt; h++) {
+                    int element1 = column1 + direction[0]*(h+1);
+                    int element2 = row1 + direction[1]*(h+1);
+
+                    int positionn = 8*(8-element2) + element1;
+                    if (String.valueOf(huidigenotatie.charAt(positionn)).equals("0")){
+                        index2++;
+
+                    }
+
+                }
+
+                // alle velden leeg
+                if (index2 == countt){
+                    // move is legaal moet gemaakt worden
+                    index = 1;
+
+                    int column = (int) Character.toLowerCase(character) - 97;
+                    int row = 8 - Integer.parseInt(String.valueOf(zet.charAt(2)));
+                    int counter2 = 8 * row + column;
+
+                    huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
+                    huidigenotatie = huidigenotatie.substring(0, counter2) + 't' + huidigenotatie.substring(counter2+1);
+                    createbord(huidigenotatie);
+                }
+            }
+            i++;
+
+
         }
     }
 }
