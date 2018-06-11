@@ -13,3 +13,6 @@ Het is me gisteren gelukt om de beginstelling in te laden met de hardcoded strin
 ![img_7943](https://user-images.githubusercontent.com/36193067/41151198-5f1ae040-6b10-11e8-8c19-bbd1cec4d1de.JPG)
 
 Nu is het de taak om de zetten 1. Qxc6 d2 2. Qf6+ Qg7 3. Qxd8+ mooi in te laden. Het is jammer dat het in de korte notatie staat aangezien er nu veel meer zoekwerk nodig is om de plek te vinden waar het stuk staat.
+
+# dag 6, 11 juni
+Het is vrijdag gelukt om een zet met een loper te maken. Deze zet kan alleen gedaan worden als er slechts 1 loper op het bord staat. Nu moet het mogelijk gemaakt worden voor alle stukken met meerdere stukken op het bord om zetten te doen. Dit is dan ook mijn doel voor de komende dagen.
