@@ -6,11 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Integer.parseInt;
+import static java.lang.StrictMath.abs;
 
 
-    //{"title":"Saving The Draw","comments":"","url":"https://www.chess.com/forum/view/daily-puzzles/7-5-2016-saving-the-draw","publish_time":1467702000,"fen":"8/4K3/8/3k4/8/1N1B4/6p1/8 w - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/4K3/8/3k4/8/1N1B4/6p1/8 w - - 0 1\"]\r\n\r\n1. Bc4+ Kxc4 2. Nd2+ Kd3 3. Nf3\r\n*","image":"https://www.chess.com/dynboard?fen=8/4K3/8/3k4/8/1N1B4/6p1/8%20w%20-%20-%200%201&size=2"}
-
+//{"title":"Mate in 4","comments":"","url":"https://www.chess.com/forum/view/daily-puzzles/692015---mate-in-4","publish_time":1433833200,"fen":"1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1\"]\r\n\r\n1. Bg6+ Kg8 2. Qa2+ d5 3. Qxd5+ Qf7 4. Qxf7#\r\n*","image":"https://www.chess.com/dynboard?fen=1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1%20w%20-%20-%200%201&size=2"}
 public class ChessExercise extends AppCompatActivity {
 
     @Override
@@ -20,93 +23,11 @@ public class ChessExercise extends AppCompatActivity {
     }
 
     public void getPuzzleNow(View view) {
-        String coordinates = "";
-        String fed = "8/4K3/8/3k4/8/1N1B4/6p1/8";
-        String[] array = fed.split("");
-        int arrayLength = array.length;
-
-        for (int i = 1; i < arrayLength; i++) {
-
-            if (array[i].equals("r")) {
-                coordinates = coordinates + "r";
-            } else if (array[i].equals("n")) {
-
-                coordinates = coordinates + "n";
-            } else if (array[i].equals("b")) {
-                coordinates = coordinates + "b";
-            } else if (array[i].equals("q")) {
-                coordinates = coordinates + "q";
-            } else if (array[i].equals("k")) {
-                coordinates = coordinates + "k";
-            } else if (array[i].equals("p")) {
-                coordinates = coordinates + "p";
-            } else if (array[i].equals("R")) {
-                coordinates = coordinates + "t";
-            } else if (array[i].equals("N")) {
-                coordinates = coordinates + "m";
-            } else if (array[i].equals("B")) {
-                coordinates = coordinates + "c";
-            } else if (array[i].equals("Q")) {
-                coordinates = coordinates + "s";
-            } else if (array[i].equals("K")) {
-                coordinates = coordinates + "l";
-            } else if (array[i].equals("P")) {
-                coordinates = coordinates + "o";
-            } else if (array[i].equals("1") || array[i].equals("2") || array[i].equals("3") || array[i].equals("4") ||
-                    array[i].equals("5") || array[i].equals("6") || array[i].equals("7") || array[i].equals("8"))
-
-            {
-                for (int j = 0; j < parseInt(array[i]); j++) {
-                    coordinates = coordinates + "0";
-                }
-            }
-
-        }
+        String fed = "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1";;
+        String coordinates = fedToString(fed);
         Log.d("coordinates", coordinates);
         Log.d("coordinates_length", String.valueOf(coordinates.length()));
-        String[] array_coordinates = coordinates.split("");
-
-        for (int i = 0; i < 64; i++) {
-            int column = i % 8 + 1;
-            int row = 8 - (i - i % 8) / 8;
-            char c = (char) (column + 96);
-
-            String buttonID = String.valueOf(c) + String.valueOf(row);
-            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-
-            ImageView img = (ImageView) findViewById(resID);
-
-            if (array_coordinates[i + 1].equals("r")) {
-                img.setImageResource(R.drawable.blackrook);
-            } else if (array_coordinates[i + 1].equals("n")) {
-
-                img.setImageResource(R.drawable.blackknight);
-            } else if (array_coordinates[i + 1].equals("b")) {
-                img.setImageResource(R.drawable.blackbishop);
-            } else if (array_coordinates[i + 1].equals("q")) {
-                img.setImageResource(R.drawable.blackqueen);
-            } else if (array_coordinates[i + 1].equals("k")) {
-                img.setImageResource(R.drawable.blackking);
-            } else if (array_coordinates[i + 1].equals("p")) {
-                img.setImageResource(R.drawable.blackpawn);
-            } else if (array_coordinates[i + 1].equals("t")) {
-                img.setImageResource(R.drawable.whiterook);
-            } else if (array_coordinates[i + 1].equals("m")) {
-                img.setImageResource(R.drawable.whiteknight);
-            } else if (array_coordinates[i + 1].equals("c")) {
-                img.setImageResource(R.drawable.whitebishop);
-            } else if (array_coordinates[i + 1].equals("s")) {
-                img.setImageResource(R.drawable.whitequeen);
-            } else if (array_coordinates[i + 1].equals("l")) {
-                img.setImageResource(R.drawable.whiteking);
-            } else if (array_coordinates[i + 1].equals("o")) {
-                img.setImageResource(R.drawable.whitepawn);
-            } else if (array_coordinates[i + 1].equals("0")) {
-                img.setImageResource(0);
-                ;
-            }
-
-        }
+        createbord(coordinates);
     }
 
     public void zetten(View view) {
@@ -155,25 +76,29 @@ public class ChessExercise extends AppCompatActivity {
     }
 
     public void doezet(View view) {
-        String huidigenotatie = "000000000000l00000000000000k0000000000000m0c0000000000p000000000";
-        String zet = "Bc4";
+        String fed = "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1";
+        String huidigenotatie = fedToString(fed);
+        String zet = "Be8";
 
-        Log.d("tag4", String.valueOf(zet.charAt(0)));
 
         if (zet.length() == 3) {
+            // Loper
             if (String.valueOf(zet.charAt(0)).equals("B")) {
 
-                String positions = "";
+                List<Integer> myList = new ArrayList<Integer>();
                 int counter = 0;
+
+
                 for (int i = 0; i < huidigenotatie.length(); i++) {
                     if (huidigenotatie.charAt(i) == 'c') {
                         counter++;
-                        positions = positions + i;
+                        myList.add(i);
                     }
                 }
-
+                Log.d("positions", String.valueOf(myList.get(0)));
+                Log.d("counter", String.valueOf(counter));
                 if (counter == 1) {
-                    int position = Integer.parseInt(String.valueOf(positions));
+                    int position = Integer.parseInt(String.valueOf(myList.get(0)));
                     huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
                     char character = zet.charAt(1);
                     int column = (int) Character.toLowerCase(character) - 97;
@@ -186,7 +111,91 @@ public class ChessExercise extends AppCompatActivity {
                     createbord(huidigenotatie);
 
                 }
-                Log.d("positions", positions);
+
+                else {
+                    //for (int i = 0; i < counter; i++) {
+                    int index = 0;
+                    int i = 0;
+                    while (index != 1 && i != counter){
+                        Log.d("hier1", "hier1");
+                        int position = myList.get(0);
+                        int column1 = position % 8;
+                        int row1 = 8 - (position / 8);
+                        Log.d("row1", String.valueOf(row1));
+                        char character = zet.charAt(1);
+                        int column2 = (int) Character.toLowerCase(character) - 97;
+                        int row2 = Integer.parseInt(String.valueOf(zet.charAt(2)));
+                        Log.d("row2", String.valueOf(row2));
+
+                        Log.d("test", String.valueOf(abs(column2 - column1)));
+                        Log.d("test2", String.valueOf(abs(row2 - row1)));
+                        if (abs(column2 - column1) == abs(row2 - row1)){
+                            int countt = abs(column2 - column1) - 1;
+                            int index2 = 0;
+                            int direction[] = new int[2];
+
+                            // richting loper bepalen
+                            if (column2 > column1) {
+                                direction[0] = 1;
+                            }
+                            else{
+                                direction[0] = -1;
+                            }
+                            if (row2 > row1){
+                                direction[1] = 1;
+                            }
+
+                            else {
+                                direction[1] = -1;
+                            }
+
+
+                            for (int h = 0; h < countt; h++) {
+                                Log.d("yeah", String.valueOf(h));
+                                int element1 = column1 + direction[0]*(h+1);
+                                Log.d("element1", String.valueOf(element1));
+                                int element2 = row1 + direction[1]*(h+1);
+                                Log.d("element2", String.valueOf(element2));
+
+                                int positionn = 8*(8-element2) + element1;
+                                Log.d("nu~!pos", String.valueOf(positionn));
+                                Log.d("jochem2", String.valueOf(huidigenotatie.charAt(positionn)));
+                                if (String.valueOf(huidigenotatie.charAt(positionn)).equals("0")){
+                                    Log.d("hier1234", "hier1234");
+                                    index2++;
+
+                                }
+
+                            }
+
+                            Log.d("index2", String.valueOf(index2));
+                            Log.d("countt", String.valueOf(countt));
+                            // alle velden leeg
+                            if (index2 == countt){
+                                // move is legaal moet gemaakt worden
+                                index = 1;
+                                Log.d("jajaja", "jjJj");
+
+
+                                int column = (int) Character.toLowerCase(character) - 97;
+                                Log.d("column", String.valueOf(column));
+                                int row = 8 - Integer.parseInt(String.valueOf(zet.charAt(2)));
+                                Log.d("row", String.valueOf(row));
+                                int counter2 = 8 * row + column;
+
+                                huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
+                                huidigenotatie = huidigenotatie.substring(0, counter2) + 'c' + huidigenotatie.substring(counter2+1);
+                                createbord(huidigenotatie);
+                                index = 1;
+                            }
+                        }
+                        i++;
+
+
+                    }
+
+                }
+
                 Log.d("counter", String.valueOf(counter));
                 huidigenotatie.indexOf('c');
 
@@ -199,6 +208,53 @@ public class ChessExercise extends AppCompatActivity {
 //            String[] array = fed.split("");
     }
 
+
+    // maakt een overzichtelijkere string van FED-notatie
+    public String fedToString(String fed) {
+        String coordinates = "";
+        String[] array = fed.split("");
+        int arrayLength = array.length;
+
+        for (int i = 1; i < arrayLength; i++) {
+
+            if (array[i].equals("r")) {
+                coordinates = coordinates + "r";
+            } else if (array[i].equals("n")) {
+
+                coordinates = coordinates + "n";
+            } else if (array[i].equals("b")) {
+                coordinates = coordinates + "b";
+            } else if (array[i].equals("q")) {
+                coordinates = coordinates + "q";
+            } else if (array[i].equals("k")) {
+                coordinates = coordinates + "k";
+            } else if (array[i].equals("p")) {
+                coordinates = coordinates + "p";
+            } else if (array[i].equals("R")) {
+                coordinates = coordinates + "t";
+            } else if (array[i].equals("N")) {
+                coordinates = coordinates + "m";
+            } else if (array[i].equals("B")) {
+                coordinates = coordinates + "c";
+            } else if (array[i].equals("Q")) {
+                coordinates = coordinates + "s";
+            } else if (array[i].equals("K")) {
+                coordinates = coordinates + "l";
+            } else if (array[i].equals("P")) {
+                coordinates = coordinates + "o";
+            } else if (array[i].equals("1") || array[i].equals("2") || array[i].equals("3") || array[i].equals("4") ||
+                    array[i].equals("5") || array[i].equals("6") || array[i].equals("7") || array[i].equals("8"))
+
+            {
+                for (int j = 0; j < parseInt(array[i]); j++) {
+                    coordinates = coordinates + "0";
+                }
+            }
+        }
+        return coordinates;
+    }
+
+    // maak bord naar notatie
     public void createbord(String coordinates) {
         String[] array_coordinates = coordinates.split("");
 
