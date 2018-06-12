@@ -549,10 +549,10 @@ public class ChessExercise extends AppCompatActivity {
                 }
             }
 
-            // pion
+            // pion slaan
 
-            if (pieceString.equals("P") && column2 == column1 && String.valueOf(huidigenotatie.charAt(8*(8-row2) + column2)).equals("0")
-             && (abs(column2 - column1) == 1  || abs(row2 - row1) == 2)) {
+            else if (pieceString.equals("P") && !String.valueOf(huidigenotatie.charAt(8*(8-row2) + column2)).equals("0")
+             && abs(column2 - column1) == 1  && abs(row2 - row1) == 1) {
 
                 indexvariabele = 1;
                 if (column2 > column1) {
@@ -566,6 +566,19 @@ public class ChessExercise extends AppCompatActivity {
                     direction[1] = -1;
                 }
             }
+
+            // pion recht
+            else if (pieceString.equals("P") && column2 == column1 && String.valueOf(huidigenotatie.charAt(8*(8-row2) + column2)).equals("0")
+                    && (abs(row2 - row1) == 1  || abs(row2 - row1) == 2)) {
+                indexvariabele = 1;
+                if (row2 > row1) {
+                    direction[1] = 1;
+                } else {
+                    direction[1] = -1;
+                }
+                    direction[0] = 0;
+            }
+
 
             if (indexvariabele == 1) {
                 for (int h = 0; h < countt; h++) {
