@@ -16,3 +16,7 @@ Nu is het de taak om de zetten 1. Qxc6 d2 2. Qf6+ Qg7 3. Qxd8+ mooi in te laden.
 
 # dag 6, 11 juni
 Het is vrijdag gelukt om een zet met een loper te maken. Deze zet kan alleen gedaan worden als er slechts 1 loper op het bord staat. Nu moet het mogelijk gemaakt worden voor alle stukken met meerdere stukken op het bord om zetten te doen. Dit is dan ook mijn doel voor de komende dagen.
+
+# dag 7, 12 juni
+Het is maandag gelukt om een stuk te verplaatsen voor een loper, dame, toren en pion als er meerdere van deze stukken op het bord staan. Dit lukt alleen als de notatie met drie letters wordt aangegeven. Echter als de notatie met vier letters wordt aangegeven verplaatst het stuk nog niet aangezien ik hier nog wat code voor moet schrijven. Ook wil ik ervoor zorgen dat het paard en de koning kunnen verplaatsen.
+
