@@ -23,3 +23,7 @@ Het is maandag gelukt om een stuk te verplaatsen voor een loper, dame, toren en 
 # dag 8, 13 juni
 Het is gisteren gelukt om voor alle stukken een zet te doen. Deze code was (is) wat groot daardoor ben ik bezig met de codetekst wat kleiner en overzichtelijker te maken. Verder kunnen zetten slechts gedaan worden als deze zijn weergeven in een notatie van drie letters zoals Ke8 (koning gaat naar e8) of Pe5 (pion gaat naar e5). De notatiezetten zoals Lde5 moeten nog geïmplementeerd worden. Dit is echter een stuk makkelijker aangezien met de d de specifieke positie van de loper bekend is. Deze hoeft dus alleen geselecteerd en verwijderd te worden. De laatste zetten die erin moeten worden gezet zijn: e1=Q (pion promoveerd tot dame), 0-0(-0) (rokade), en eventueel een en passant zet. 
 
+# dag 9, 14 juni
+Het is me gisteren gelukt om zetten als Lde5 te doen. Verder ben ik begonnen met het inladen van JSON aangezien ik die gehardcoded had. 
+Daar ga ik vandaag ook mee verder.
+
