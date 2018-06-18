@@ -1,11 +1,16 @@
 package com.example.melle.chesslessons;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,6 +18,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.Character.isUpperCase;
 import static java.lang.Integer.parseInt;
@@ -25,28 +31,74 @@ import static java.lang.StrictMath.abs;
 //{"title":"Short and Decisive","comments":"","url":"https:\/\/www.chess.com\/forum\/view\/daily-puzzles\/9292009---short-and-decisive","publish_time":1254207600,"fen":"4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1 b - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1 b - - 0 1\"]\r\n\r\n1...Rxd2 2. Rxd2 Nf3+\r\n*","image":"https:\/\/www.chess.com\/dynboard?fen=4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1%20b%20-%20-%200%201&size=2"}
 
 
-public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callback {
+public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callback , View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chess_exercise);
         getPuzzleNow();
+//        Button button50 = (Button)findViewById(R.id.button5);
+//        verdwijn(button50);
+        initialiseClickers();
+
+        verdwijn1();
 
     }
 
-//    String pgn = "\"[Date \\\"????.??.??\\\"]\\r\\n[Result \\\"*\\\"]\\r\\n[FEN \\\"4r3/5RBp/3pk3/6pQ/2P1rp2/2n5/4R3/7K w - - 0 1\\\"]\\r\\n\\r\\n1. Qxh7 Rh8 2. Bxh8 d5 3. Qg6#\\r\\n*\"";
-//    String fen = "4r3/5RBp/3pk3/6pQ/2P1rp2/2n5/4R3/7K w - - 0 1";
+    String fen = "8/5pNk/2K5/6P1/2r5/8/6B1/8 w - - 0 1";
+    String pgn = "[Date \"????.??.??\"]\r\n" +
+            "[Result \"*\"]\r\n" +
+            "[FEN \"8/5pNk/2K5/6P1/2r5/8/6B1/8 w - - 0 1\"]\r\n\r" +
+            "\n" +
+            "1. Kd5 Rg4 2. Bh3 Rg3 3. Ne6 Rxh3 (3... fxe6+ 4. Bxe6) 4. g6+ Kxg6 (4... fxg6 5. Ng5+) 5. Nf4+";
 
-//    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/1n6/8/1K5k/3P4/B7/8 w - - 0 1\"]\r\n\r\n1. Be6 Na8 2. Kc5 Nc7 3. Bf7 Na6+ 4. Kb5 Nb8 5. Be8 Kg5 6. Kb6 Kf4 7. Bb5\r\nKe3 8. Kc7\r\n*\"";
-//    String fen = "8/8/1n6/8/1K5k/3P4/B7/8 w - - 0 1";
+    public void verdwijn1() {
 
-    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/1n6/8/1K5k/3P4/B7/8 w - - 0 1\"]\r\n\r\n1... g1=Q 2. a8=N a6 3. O-O axb5 4. O-O-O O-O 5. a4 O-O-O\r\n*\"";
-    String fen = "rnbqkbnr/Pp1ppppp/8/2p5/4P3/5N2/PPPP1PpP/RNBQKB1R b KQkq - 1 2";
+        for (int i = 0; i < 64; i++) {
+            int column = i % 8 + 1;
+            int row = 8 - (i - i % 8) / 8;
+            char c = (char) (column + 96);
 
-//    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqk2r/ppp2ppp/8/3p4/2nNn3/2P3P1/P1Q1PPBP/R1B1K2R w - - 0 1\"]\r\n\r\n1. Bxe4 dxe4 2. Qa4+ c6 3. Qxc4\r\n*";
-//    String fen = "r1bqk2r/ppp2ppp/8/3p4/2nNn3/2P3P1/P1Q1PPBP/R1B1K2R w - - 0 1";
+            String buttonID = String.valueOf(c) + String.valueOf(row);
+            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
 
+            ImageView img = (ImageView) findViewById(resID);
+            verdwijn2(img);
+        }
+    }
+
+    public void verdwijn2(final ImageView img) {
+        img.postDelayed(new Runnable() {
+            public void run() {
+                img.setVisibility(View.INVISIBLE);
+            }
+        }, 3000);
+    }
+
+    public void confirmMove(View view) {
+        EditText edit  = (EditText)findViewById(R.id.editText2);
+        String editt = edit.getText().toString();
+
+        Log.d("jochem23", chessMoves[zettenindex]);
+        Log.d("jochem24", editt);
+
+        if (chessMoves[zettenindex].equals(editt)) {
+            Log.d("erin", "erin");
+            int colour = ((colourOriginal + zettenindex) % 2);
+            String zet = chessMoves[zettenindex];
+            Log.d("chessmoves", chessMoves[zettenindex]);
+            Log.d("chessmoves2", coordinates);
+            coordinates = doezett(coordinates, colour, zet);
+            zettenindex++;
+        }
+
+        else{
+
+            // fout gemaakt
+        }
+
+    }
 
     public void nieuwe(View view) {
         getPuzzleNow();
@@ -117,8 +169,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             coordinates = doezett(coordinates, colour, zet);
             zettenindex++;
         }
-
-
     }
 
     public String[] fenStringSplit(String fen) {
@@ -168,11 +218,12 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             }
         }
         arrayint[0] = 0;
-        arrayint[index2] = zettenstring.length() - 2;
+        arrayint[index2] = zettenstring.length();
 
 
         for (int j = 0; j < index2; j = j + 2) {
             dejuistestring = dejuistestring + zettenstring.substring(arrayint[j], arrayint[j + 1]);
+            Log.d("handig", zettenstring.substring(arrayint[j], arrayint[j + 1]));
         }
 
         Log.d("tag3", dejuistestring);
@@ -215,6 +266,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
                 }
 
+                moveString = moveString.replaceAll("(\\r|\\n)", "");
                 array4[indexxx] = moveString;
                 Log.d("hoi", array4[indexxx]);
                 Log.d("move", moveString);
@@ -717,4 +769,69 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         return huidigenotatie;
 
     }
+
+
+    public void changeEditText(View view) {
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        EditText edit  = (EditText)findViewById(R.id.editText2);
+        String editt = edit.getText().toString();
+
+        Log.d("hoi", String.valueOf(v.getId()));
+        switch (v.getId()) {
+
+            case R.id.aa:
+                editt = editt + "P";
+                break;
+            case R.id.ab:
+                Log.d("klokhuishoofd1", "jochem");
+                break;
+            case R.id.ac:
+                Log.d("klokhuishoofd3", "jochem");
+                break;
+            case R.id.ad:
+                Log.d("klokhuishoofd4", "jochem");
+                break;
+            case R.id.ae:
+                Log.d("klokhuishoofd5", "jochem");
+                break;
+            case R.id.af:
+                Log.d("klokhuishoofd6", "jochem");
+                break;
+        }
+    }
+
+    public void initialiseClickers() {
+
+        for (int i = 0; i < 12; i++) {
+            int column = i % 6 + 1;
+            int row = 1 + i / 6;
+            char c = (char) (column + 96);
+            char d = (char) (row + 96);
+
+            String buttonID = String.valueOf(d) + String.valueOf(c);
+            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            ImageView img = (ImageView) findViewById(resID);
+
+            img.setOnClickListener(this); // calling onClick() method
+
+        }
+
+        for (int i = 0; i < 16; i++) {
+            int column = i % 8 + 1;
+            int row = 3 + i / 8;
+            char c = (char) (column + 96);
+            char d = (char) (row + 96);
+
+            String buttonID = String.valueOf(d) + String.valueOf(c);
+            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            TextView img = (TextView) findViewById(resID);
+            img.setOnClickListener(this); // calling onClick() method
+
+        }
+    }
+
 }

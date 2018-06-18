@@ -15,7 +15,6 @@ public class GetPuzzle extends JSONObject implements
 
     Context contextt;
     Callback callbackk;
-    String hoi;
 
     public GetPuzzle(Context context) {
 

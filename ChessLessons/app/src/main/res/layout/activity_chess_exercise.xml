@@ -9,28 +9,55 @@
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:onClick="doezet"
         android:text="zettendoen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965" />
+        app:layout_constraintVertical_bias="0.946" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         android:onClick="nieuwe"
+        android:text="nieuwe puzzel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881" />
+        app:layout_constraintVertical_bias="0.796" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="105dp"
+        android:layout_height="42dp"
+        android:onClick="confirmMove"
+        android:text="bevestig"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.817" />
 
     <android.support.v7.widget.GridLayout
         android:id="@+id/gridLayout2"
@@ -38,6 +65,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:visibility="invisible"
         app:columnCount="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -601,6 +629,252 @@
             app:layout_column="7"
             app:layout_row="7"
             app:srcCompat="@drawable/whiterook" />
+
+    </android.support.v7.widget.GridLayout>
+
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/gridLayout3"
+        android:layout_width="360dp"
+        android:layout_height="180dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="visible"
+        app:columnCount="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266"
+        app:rowCount="8">
+
+        <ImageView
+            android:id="@+id/aa"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="0"
+            app:layout_row="0"
+            app:srcCompat="@drawable/whitepawn"
+            android:onClick="changeEditText"/>
+
+        <ImageView
+            android:id="@+id/ab"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="1"
+            app:layout_row="0"
+            app:srcCompat="@drawable/whiterook" />
+
+        <ImageView
+            android:id="@+id/ac"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="2"
+            app:layout_row="0"
+            app:srcCompat="@drawable/whiteknight" />
+
+        <ImageView
+            android:id="@+id/ad"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="3"
+            app:layout_row="0"
+            app:srcCompat="@drawable/whitebishop" />
+
+        <ImageView
+            android:id="@+id/ae"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="4"
+            app:layout_row="0"
+            app:srcCompat="@drawable/whiteking" />
+
+        <ImageView
+            android:id="@+id/af"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="5"
+            app:layout_row="0"
+            app:srcCompat="@drawable/whitequeen" />
+
+        <ImageView
+            android:id="@+id/bf"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="0"
+            app:layout_row="1"
+            app:srcCompat="@drawable/blackpawn" />
+
+        <ImageView
+            android:id="@+id/ba"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="1"
+            app:layout_row="1"
+            app:srcCompat="@drawable/blackrook" />
+
+        <ImageView
+            android:id="@+id/bb"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="2"
+            app:layout_row="1"
+            app:srcCompat="@drawable/blackknight" />
+
+        <!--niewue rij-->
+
+        <ImageView
+            android:id="@+id/bc"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="3"
+            app:layout_row="1"
+            app:srcCompat="@drawable/blackbishop" />
+
+        <ImageView
+            android:id="@+id/bd"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="4"
+            app:layout_row="1"
+            app:srcCompat="@drawable/blackking" />
+
+        <ImageView
+            android:id="@+id/be"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="5"
+            app:layout_row="1"
+            app:srcCompat="@drawable/blackqueen" />
+
+        <TextView
+            android:id="@+id/ca"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="0"
+            app:layout_row="2"
+            android:text="A"/>
+
+        <TextView
+            android:id="@+id/cb"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="1"
+            app:layout_row="2"
+            android:text="B"/>
+
+        <TextView
+            android:id="@+id/cc"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="2"
+            app:layout_row="2"
+            android:text="C"/>
+
+        <TextView
+            android:id="@+id/cd"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="3"
+            app:layout_row="2"
+            android:text="D"/>
+
+        <TextView
+            android:id="@+id/ce"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="4"
+            app:layout_row="2"
+            android:text="E"/>
+
+        <TextView
+            android:id="@+id/cf"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="5"
+            app:layout_row="2"
+            android:text="F"/>
+
+        <TextView
+            android:id="@+id/cg"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="6"
+            app:layout_row="2"
+            android:text="G"/>
+
+        <TextView
+            android:id="@+id/ch"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="7"
+            app:layout_row="2"
+            android:text="H"/>
+
+        <TextView
+            android:id="@+id/da"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="0"
+            app:layout_row="3"
+            android:text="1"/>
+
+        <TextView
+            android:id="@+id/db"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="1"
+            app:layout_row="3"
+            android:text="2"/>
+
+        <TextView
+            android:id="@+id/dc"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="2"
+            app:layout_row="3"
+            android:text="3"/>
+
+        <TextView
+            android:id="@+id/dd"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="3"
+            app:layout_row="3"
+            android:text="4"/>
+
+        <TextView
+            android:id="@+id/de"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="4"
+            app:layout_row="3"
+            android:text="5"/>
+
+        <TextView
+            android:id="@+id/df"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="5"
+            app:layout_row="3"
+            android:text="6"/>
+
+        <TextView
+            android:id="@+id/dg"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="6"
+            app:layout_row="3"
+            android:text="7"/>
+
+        <TextView
+            android:id="@+id/dh"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="7"
+            app:layout_row="3"
+            android:text="8"/>
+
 
     </android.support.v7.widget.GridLayout>
 
