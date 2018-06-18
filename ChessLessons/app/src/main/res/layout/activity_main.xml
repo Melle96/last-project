@@ -12,6 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="chessExercise"
-        android:text="log in" />
+        android:text="Aanmelden" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registreer"
+        android:onClick="registreer"/>
 
 </LinearLayout>

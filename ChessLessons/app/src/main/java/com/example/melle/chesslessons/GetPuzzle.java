@@ -1,7 +1,6 @@
 package com.example.melle.chesslessons;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,6 +15,7 @@ public class GetPuzzle extends JSONObject implements
 
     Context contextt;
     Callback callbackk;
+    String hoi;
 
     public GetPuzzle(Context context) {
 
@@ -38,14 +38,7 @@ public class GetPuzzle extends JSONObject implements
     public void onResponse(JSONObject response) {
 
         JSONObject json;
-//        try {
         json = response;
-        Log.d("tag", String.valueOf(json));
-//        }
-//        catch (JSONException e) {
-//            e.printStackTrace();
-//            return;
-//        }
         callbackk.gotQuestions(json);
     }
 

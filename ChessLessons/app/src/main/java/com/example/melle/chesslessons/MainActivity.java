@@ -9,35 +9,40 @@ import android.view.View;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity implements GetPuzzle.Callback {
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GetPuzzle request = new GetPuzzle(getApplicationContext());
-        request.GetPuzzle(this);
+//        GetPuzzle request = new GetPuzzle(getApplicationContext());
+//        request.GetPuzzle(this);
     }
 
-    @Override
-    public void gotQuestions(JSONObject questions) {
+//    @Override
+//    public String gotQuestions(JSONObject questions) {
+//
+//        Log.d("blij", String.valueOf(questions));
+//        try {
+//            Log.d("blij2", questions.getString("pgn"));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-        Log.d("blij", String.valueOf(questions));
-        try {
-            Log.d("blij2", questions.getString("pgn"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void gotQuestionsError(String message) {
-        Log.d("boosheid", message);
-    }
+//    @Override
+//    public void gotQuestionsError(String message) {
+//        Log.d("boosheid", message);
+//    }
 
     public void chessExercise(View view) {
-        Intent intent = new Intent(MainActivity.this, ChessExercise.class);
+        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    public void registreer(View view) {
+        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.melle.chesslessons;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,14 +11,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.Character.isUpperCase;
 import static java.lang.Integer.parseInt;
 import static java.lang.StrictMath.abs;
 
-
+//{"title":"Chapais, 1780","url":"https:\/\/www.chess.com\/forum\/view\/daily-puzzles\/1-2-2018-chapais-1780","publish_time":1514880000,"fen":"8\/8\/1n6\/8\/1K5k\/3P4\/B7\/8 w - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8\/8\/1n6\/8\/1K5k\/3P4\/B7\/8 w - - 0 1\"]\r\n\r\n1. Be6 Na8 2. Kc5 Nc7 3. Bf7 Na6+ 4. Kb5 Nb8 5. Be8 Kg5 6. Kb6 Kf4 7. Bb5\r\nKe3 8. Kc7\r\n*","image":"https:\/\/www.chess.com\/dynboard?fen=8\/8\/1n6\/8\/1K5k\/3P4\/B7\/8%20w%20-%20-%200%201&size=2"}
 //{"title":"Mate in 4","comments":"","url":"https://www.chess.com/forum/view/daily-puzzles/692015---mate-in-4","publish_time":1433833200,"fen":"1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1\"]\r\n\r\n1. Bg6+ Kg8 2. Qa2+ d5 3. Qxd5+ Qf7 4. Qxf7#\r\n*","image":"https://www.chess.com/dynboard?fen=1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1%20w%20-%20-%200%201&size=2"}
-public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callback{
+
+//black
+//{"title":"Short and Decisive","comments":"","url":"https:\/\/www.chess.com\/forum\/view\/daily-puzzles\/9292009---short-and-decisive","publish_time":1254207600,"fen":"4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1 b - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1 b - - 0 1\"]\r\n\r\n1...Rxd2 2. Rxd2 Nf3+\r\n*","image":"https:\/\/www.chess.com\/dynboard?fen=4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1%20b%20-%20-%200%201&size=2"}
+
+
+public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +35,30 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     }
 
+//    String pgn = "\"[Date \\\"????.??.??\\\"]\\r\\n[Result \\\"*\\\"]\\r\\n[FEN \\\"4r3/5RBp/3pk3/6pQ/2P1rp2/2n5/4R3/7K w - - 0 1\\\"]\\r\\n\\r\\n1. Qxh7 Rh8 2. Bxh8 d5 3. Qg6#\\r\\n*\"";
+//    String fen = "4r3/5RBp/3pk3/6pQ/2P1rp2/2n5/4R3/7K w - - 0 1";
+
+//    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/1n6/8/1K5k/3P4/B7/8 w - - 0 1\"]\r\n\r\n1. Be6 Na8 2. Kc5 Nc7 3. Bf7 Na6+ 4. Kb5 Nb8 5. Be8 Kg5 6. Kb6 Kf4 7. Bb5\r\nKe3 8. Kc7\r\n*\"";
+//    String fen = "8/8/1n6/8/1K5k/3P4/B7/8 w - - 0 1";
+
+    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/1n6/8/1K5k/3P4/B7/8 w - - 0 1\"]\r\n\r\n1... g1=Q 2. a8=N a6 3. O-O axb5 4. O-O-O O-O 5. a4 O-O-O\r\n*\"";
+    String fen = "rnbqkbnr/Pp1ppppp/8/2p5/4P3/5N2/PPPP1PpP/RNBQKB1R b KQkq - 1 2";
+
+//    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqk2r/ppp2ppp/8/3p4/2nNn3/2P3P1/P1Q1PPBP/R1B1K2R w - - 0 1\"]\r\n\r\n1. Bxe4 dxe4 2. Qa4+ c6 3. Qxc4\r\n*";
+//    String fen = "r1bqk2r/ppp2ppp/8/3p4/2nNn3/2P3P1/P1Q1PPBP/R1B1K2R w - - 0 1";
+
+
     public void nieuwe(View view) {
         getPuzzleNow();
     }
 
     @Override
     public void gotQuestions(JSONObject questions) {
-
         Log.d("blij", String.valueOf(questions));
         try {
-            Log.d("blij2", questions.getString("pgn"));
-            String test = questions.getString("pgn");
-            String[] testarray = zettenn(test);
+
+            pgn = questions.getString("pgn");
+            fen = questions.getString("fen");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -50,36 +70,71 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         Log.d("boosheid", message);
     }
 
+
+    String coordinates;
+    int colourOriginal;
+    int zettenindex;
+    String chessMoves[];
+
     public void getPuzzleNow() {
 
         GetPuzzle request = new GetPuzzle(getApplicationContext());
         request.GetPuzzle(this);
-        
+        //Log.d("qwerty", String.valueOf(request.callbackk.questions));
+
         // hier json opvragen
 
-        String fen = "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1";
+//        String pgn = "\"[Date \\\"????.??.??\\\"]\\r\\n[Result \\\"*\\\"]\\r\\n[FEN \\\"4r3/5RBp/3pk3/6pQ/2P1rp2/2n5/4R3/7K w - - 0 1\\\"]\\r\\n\\r\\n1. Qxh7 Rh8 2. Bxh8 d5 3. Qg6#\\r\\n*\"";
+//        String fen = "4r3/5RBp/3pk3/6pQ/2P1rp2/2n5/4R3/7K w - - 0 1";
+        Log.d("test3421312", fen);
         String[] fenStringAndColour = fenStringSplit(fen);
         String fenString = fenStringAndColour[0];
 
-        String coordinates = fedToString(fenString);
+        coordinates = fedToString(fenString);
         createbord(coordinates);
+
+        zettenindex = 0;
+        colourOriginal = 1;
+        if (fenStringAndColour[1].equals("w")) {
+            colourOriginal = 0;
+        }
+
+
+        chessMoves = zettenn(pgn);
     }
 
-    public String[] fenStringSplit(String fen){
+    // zetten doen
+
+
+    public void doezet(View view) {
+        if (zettenindex == chessMoves.length) {
+            getPuzzleNow();
+        } else {
+            int colour = ((colourOriginal + zettenindex) % 2);
+            String zet = chessMoves[zettenindex];
+            Log.d("chessmoves", chessMoves[zettenindex]);
+            Log.d("chessmoves2", coordinates);
+            coordinates = doezett(coordinates, colour, zet);
+            zettenindex++;
+        }
+
+
+    }
+
+    public String[] fenStringSplit(String fen) {
         String[] fenSplitted = fen.split(" ");
 
         String fenPosition = fenSplitted[0];
         String colour = fenSplitted[1];
 
         String fenStringAndColour[] = new String[2];
-        fenStringAndColour[0]= fenPosition;
-        fenStringAndColour[1] =  colour;
+        fenStringAndColour[0] = fenPosition;
+        fenStringAndColour[1] = colour;
         return fenStringAndColour;
     }
 
 
-
-    public String [] zettenn(String string) {
+    public String[] zettenn(String string) {
         //String string = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1\"]\r\n\r\n1. Bg6+ Kg8 2. Qa2+ d5 3. Qxd5+ Qf7 4. Qxf7#\r\n*";
         String[] array = string.split("");
         int index = 0;
@@ -121,31 +176,47 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         }
 
         Log.d("tag3", dejuistestring);
+
+        // soms geen spatie maar \r dus extra spatie erbij zetten
+        for (int j = 0; j < dejuistestring.length(); j++) {
+            if (Character.isUpperCase(dejuistestring.charAt(j)) && j > 1) {
+                if (!String.valueOf(dejuistestring.charAt(j - 1)).equals("=") && !String.valueOf(dejuistestring.charAt(j - 1)).equals(" ")
+                        && !String.valueOf(dejuistestring.charAt(j - 1)).equals("-")) {
+                    Log.d("jochem", "pvda");
+                    dejuistestring = dejuistestring.substring(0, j) + " " + dejuistestring.substring(j, dejuistestring.length());
+                }
+            }
+        }
+
+        Log.d("tag4", dejuistestring);
         String[] array3 = dejuistestring.split(" ");
         String[] array4 = new String[array3.length];
+        Log.d("melle", dejuistestring);
 
         int countOfMoves = 0;
         int indexxx = 0;
         for (int j = 1; j < array3.length; j++) {
             Log.d("belangrijk", array3[j]);
-            if (Character.isDigit(array3[j].charAt(0))){
-                Log.d("123","123");
-            }
-            else {
-                int indexxxx =1;
+            if (Character.isDigit(array3[j].charAt(0))) {
+                Log.d("123", "123");
+            } else {
+                int indexxxx = 1;
                 String[] array5 = array3[j].split("");
                 String moveString = "";
-                if (indexxxx ==1 && !Character.isUpperCase(array5[indexxxx].charAt(0))){
+                if (indexxxx == 1 && !isUpperCase(array5[indexxxx].charAt(0))) {
                     moveString = moveString + "P";
                 }
-                for (int h = 1; h < array5.length; h++){
+                for (int h = 1; h < array5.length; h++) {
                     Log.d("sss", array5[h]);
-                    if (!array5[h].equals("x") && !array5[h].equals("+") && !array5[h].equals("#") && !array5[h].equals("=")){
+                    if (!array5[h].equals("x") && !array5[h].equals("+") && !array5[h].equals("#")
+                            && !array5[h].equals("r") && !array5[h].equals("\\")) {
                         moveString = moveString + array5[h];
                     }
+
                 }
 
                 array4[indexxx] = moveString;
+                Log.d("hoi", array4[indexxx]);
                 Log.d("move", moveString);
                 indexxx++;
                 countOfMoves++;
@@ -163,25 +234,11 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     }
 
 
-    // zetten doen
-
-    int zettenindex = 0;
-    String fed = "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1";
-    String huidigenotatie = fedToString(fed);
-
-    public void doezet(View view) {
-        //String myArray[] = {"Bg6", "Kg8", "Qa2", "Ra8", "Ra1", "Kf7", "Pc4", "Pd5", "Pe5", "Pe4", "Nh1"};
-        String myArray[] = {"R3d2", "Qf7", "Kh1", "Rhc8", "Pa8Q"};
-        int colourOriginal = 0;
-        int colour = ((colourOriginal + zettenindex) % 2);
-        String zet = myArray[zettenindex];
-        huidigenotatie = doezett(huidigenotatie, colour, zet);
-        zettenindex++;
-
-    }
-
     // doet een enkele zet
     public String doezett(String currentNotation, int colour, String move) {
+
+        // zetten vrijmaken van eventuele \r of \n
+        move = move.replaceAll("(\\r|\\n)", "");
 
         // lege array maken om posities stuk in op te slaan
         List<Integer> myList = new ArrayList<Integer>();
@@ -189,12 +246,20 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         // initilaiseert variabele die telt hoeveel stukken er van bepaalde soort zijn
         int counter = 0;
 
-        // loper
+        // selecteer het stuk
         Character pieceSort = move.charAt(0);
+
+        // kijken of er een promotie is:
+        if (move.length() > 3 && String.valueOf(move.charAt(3)).equals("=")) {
+            pieceSort = move.charAt(4);
+            counter = -1;
+        }
+
         String piece;
 
         if (String.valueOf(pieceSort).equals("B")) {
             // geeft loper de juiste kleur
+            Log.d("lopertje", move);
             piece = "c";
             if (colour == 1) {
                 piece = "b";
@@ -235,58 +300,79 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 piece = "k";
             }
         }
-        // gaat erin als zetnotatie gelijk aan 3 is
-        if (move.length() == 3) {
-            // itereren over hele schaakbord
-            for (int i = 0; i < currentNotation.length(); i++) {
-                if (currentNotation.charAt(i) == piece.charAt(0)) {
-                    counter++;
-                    myList.add(i);
-                }
+
+        if (counter == -1 || String.valueOf(move.charAt(0)).equals("O")) {
+            if (move.length() > 3 && String.valueOf(move.charAt(move.length() - 2)).equals("=")) {
+                Log.d("Gelok", "jaja");
+                currentNotation = promotion(currentNotation, move, piece, colour);
             }
-        }
 
-        else if (move.length() == 4 && Character.isLetter(move.charAt(1))) {
-            Log.d("hier moet ik zitten", "jaa");
-            // itereren over hele schaakbord
-            int ascii = (int) move.charAt(1);
-            int column = ascii - 97;
+            else if (move.equals("O-O-O")){
+                currentNotation = castling(currentNotation, colour, 1);
+                counter = -1;
 
-            for (int i = 0; i < 8; i++) {
-                int index = 8*i + column;
-                if (currentNotation.charAt(index) == piece.charAt(0)) {
-                    counter++;
-                    myList.add(index);
-                }
             }
-        }
-
-        else if (move.length() == 4 && Character.isDigit(move.charAt(1))) {
-            // itereren over hele schaakbord
-            int row = Integer.parseInt(String.valueOf(move.charAt(1)));
-
-            for (int i = 0; i < 8; i++) {
-                int index = (8 - row)*8 + i;
-                if (currentNotation.charAt(index) == piece.charAt(0)) {
-                    counter++;
-                    myList.add(index);
-                }
+            else if (move.equals("O-O")){
+                currentNotation = castling(currentNotation, colour, 0);
+                counter = -1;
             }
-        }
-
-        // als er maar 1 loper is van bepaalde kleur
-        if (counter == 1) {
-            currentNotation = moveSinglePiece(currentNotation, move, String.valueOf(myList.get(0)), piece);
 
         }
 
-        // als er meerdere lopers zijn van bepaalde kleur
         else {
-            currentNotation = movePieceWithTwins(counter, move, currentNotation, myList, piece);
+            // gaat erin als zetnotatie gelijk aan 3 is
+            if (move.length() == 3) {
+                // itereren over hele schaakbord
+                Log.d("lopertje2", move);
+                for (int i = 0; i < currentNotation.length(); i++) {
+                    if (currentNotation.charAt(i) == piece.charAt(0)) {
+                        counter++;
+                        myList.add(i);
+                    }
+                }
+            } else if (move.length() == 4 && Character.isLetter(move.charAt(1))) {
+                Log.d("hier moet ik zitten", "jaa");
+                // itereren over hele schaakbord
+                int ascii = (int) move.charAt(1);
+                int column = ascii - 97;
 
+                for (int i = 0; i < 8; i++) {
+                    int index = 8 * i + column;
+                    if (currentNotation.charAt(index) == piece.charAt(0)) {
+                        counter++;
+                        myList.add(index);
+                    }
+                }
+            } else if (move.length() == 4 && Character.isDigit(move.charAt(1))) {
+                // itereren over hele schaakbord
+                int row = Integer.parseInt(String.valueOf(move.charAt(1)));
+
+                for (int i = 0; i < 8; i++) {
+                    int index = (8 - row) * 8 + i;
+                    if (currentNotation.charAt(index) == piece.charAt(0)) {
+                        counter++;
+                        myList.add(index);
+                    }
+                }
+            }
+
+
+            // als er maar 1 loper is van bepaalde kleur
+            if (counter == 1) {
+                currentNotation = moveSinglePiece(currentNotation, move, String.valueOf(myList.get(0)), piece);
+
+            }
+
+            // als er meerdere lopers zijn van bepaalde kleur
+            else if (counter > 1){
+                currentNotation = movePieceWithTwins(counter, move, currentNotation, myList, piece);
+
+            }
         }
         return currentNotation;
     }
+
+
 
 
     // maakt een overzichtelijkere string van FED-notatie
@@ -384,6 +470,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     // verplaatst een enkel stuk over het bord
     public String moveSinglePiece(String currentNotation, String move, String position, String piece) {
 
+
         // de postitie waar het stuk vandaan komt verkijgen en laten verdwijnen
         int positionToCome = Integer.parseInt(position);
         currentNotation = currentNotation.substring(0, positionToCome) + '0' + currentNotation.substring(positionToCome + 1);
@@ -433,6 +520,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 indexvariabele = 1;
                 countt = abs(column2 - column1) - 1;
 
+                Log.d("lopertje", zet);
                 // richting loper bepalen
                 if (column2 > column1) {
                     direction[0] = 1;
@@ -475,10 +563,23 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 }
             }
 
+
+            // pion recht
+            else if (pieceString.equals("P") && column2 == column1 && String.valueOf(huidigenotatie.charAt(8*(8-row2) + column2)).equals("0")
+                    && (abs(row2 - row1) == 1  || abs(row2 - row1) == 2)) {
+                indexvariabele = 1;
+                if (row2 > row1) {
+                    direction[1] = 1;
+                } else {
+                    direction[1] = -1;
+                }
+                    direction[0] = 0;
+            }
+
             // pion slaan
 
             else if (pieceString.equals("P") && !String.valueOf(huidigenotatie.charAt(8*(8-row2) + column2)).equals("0")
-             && abs(column2 - column1) == 1  && abs(row2 - row1) == 1) {
+                    && abs(column2 - column1) == 1  && abs(row2 - row1) == 1) {
 
                 indexvariabele = 1;
                 if (column2 > column1) {
@@ -493,17 +594,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 }
             }
 
-            // pion recht
-            else if (pieceString.equals("P") && column2 == column1 && String.valueOf(huidigenotatie.charAt(8*(8-row2) + column2)).equals("0")
-                    && (abs(row2 - row1) == 1  || abs(row2 - row1) == 2)) {
-                indexvariabele = 1;
-                if (row2 > row1) {
-                    direction[1] = 1;
-                } else {
-                    direction[1] = -1;
-                }
-                    direction[0] = 0;
-            }
 
             // paard
             else if (pieceString.equals("N") && (abs(column2 - column1) == 2 && abs(row2 - row1) == 1 ||
@@ -553,4 +643,78 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     }
 
 
+    public String promotion(String huidigenotatie, String move, String piece, int colour) {
+
+        char character = move.charAt(move.length()-4);
+        int position;
+        int position2;
+        if (colour == 1) {
+
+            position = (int) Character.toLowerCase(character) - 97 + 8*6;
+            position2 = position +8;
+        }
+
+        else{
+            position = (int) Character.toLowerCase(character) - 97 + 8;
+            position2 = position - 8;
+        }
+
+        Log.d("position", String.valueOf(position));
+        huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position + 1);
+        huidigenotatie = huidigenotatie.substring(0, position2) + piece + huidigenotatie.substring(position2 + 1);
+        createbord(huidigenotatie);
+        return huidigenotatie;
+
+    }
+
+
+    private String castling(String huidigenotatie, int colour, int i) {
+
+        String pieceRook;
+        String pieceKing;
+        int positionRook;
+        int positionRook2;
+        int positionKing;
+        int positionKing2;
+
+        // geeft toren de juiste kleur
+        pieceRook = "t";
+        if (colour == 1) {
+            pieceRook = "r";
+        }
+
+        // geeft koning juiste kleur
+        pieceKing = "l";
+        if (colour == 1) {
+            pieceKing = "k";
+        }
+
+        if (i == 1) {
+            positionRook = 56 * (1 -colour);
+            positionRook2 = 3 + 56 * (1 -colour);
+
+            positionKing = 4 + 56 * (1 -colour);
+            positionKing2 = 2 + 56 * (1 -colour);
+        }
+
+        else {
+            positionRook = 7 + 56 * (1 -colour);
+            positionRook2 = 5 + 56 * (1 -colour);
+
+            positionKing = 4 + 56 * (1 -colour);
+            positionKing2 = 6 + 56 * (1 -colour);
+        }
+
+
+        huidigenotatie = huidigenotatie.substring(0, positionRook) + '0' + huidigenotatie.substring(positionRook + 1);
+        huidigenotatie = huidigenotatie.substring(0, positionKing) + '0' + huidigenotatie.substring(positionKing + 1);
+
+        huidigenotatie = huidigenotatie.substring(0, positionRook2) + pieceRook + huidigenotatie.substring(positionRook2 + 1);
+        huidigenotatie = huidigenotatie.substring(0, positionKing2) + pieceKing + huidigenotatie.substring(positionKing2 + 1);
+
+        createbord(huidigenotatie);
+
+        return huidigenotatie;
+
+    }
 }
