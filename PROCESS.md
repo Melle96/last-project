@@ -27,3 +27,9 @@ Het is gisteren gelukt om voor alle stukken een zet te doen. Deze code was (is) 
 Het is me gisteren gelukt om zetten als Lde5 te doen. Verder ben ik begonnen met het inladen van JSON aangezien ik die gehardcoded had. 
 Daar ga ik vandaag ook mee verder.
 
+# dag 10, 15 juni
+Het is me gelukt om via de API een puzzel op te vragen en de zetten te kunnen vertalen naar beweging op het schaakbord in de app. Vandaag ga ik nog proberen de zetten als promotie en rokade erin te zetten.
+
+# dag 11, 18 juni
+Promotie en rokade staan erin. De enige zetten die er nog niet in staan zijn en passant en een pion die slaand promoveert. Dit kan ik vooralsnog niet erin zetten aangezien ik niet weet hoe chess.com dit noteert in de api. Vandaag ga ik beginnen met het gebruiksvriendelijk maken van de de puzzel. Zo moet de gebruiker zelf zetten kunnen doen en daaruit scores kunnen krijgen.
+
