@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ChessExercise">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="107dp"
+        android:layout_height="44dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.987" />
+
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
@@ -17,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946" />
+        app:layout_constraintVertical_bias="0.892" />
 
     <Button
         android:id="@+id/button"
@@ -65,13 +77,14 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:columnCount="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:rowCount="8">
 
         <ImageView
@@ -639,7 +652,7 @@
         android:layout_height="180dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:columnCount="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -652,10 +665,10 @@
             android:id="@+id/aa"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:onClick="changeEditText"
             app:layout_column="0"
             app:layout_row="0"
-            app:srcCompat="@drawable/whitepawn"
-            android:onClick="changeEditText"/>
+            app:srcCompat="@drawable/whitepawn" />
 
         <ImageView
             android:id="@+id/ab"
@@ -751,129 +764,129 @@
             android:id="@+id/ca"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="A"
             app:layout_column="0"
-            app:layout_row="2"
-            android:text="A"/>
+            app:layout_row="2" />
 
         <TextView
             android:id="@+id/cb"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="B"
             app:layout_column="1"
-            app:layout_row="2"
-            android:text="B"/>
+            app:layout_row="2" />
 
         <TextView
             android:id="@+id/cc"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="C"
             app:layout_column="2"
-            app:layout_row="2"
-            android:text="C"/>
+            app:layout_row="2" />
 
         <TextView
             android:id="@+id/cd"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="D"
             app:layout_column="3"
-            app:layout_row="2"
-            android:text="D"/>
+            app:layout_row="2" />
 
         <TextView
             android:id="@+id/ce"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="E"
             app:layout_column="4"
-            app:layout_row="2"
-            android:text="E"/>
+            app:layout_row="2" />
 
         <TextView
             android:id="@+id/cf"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="F"
             app:layout_column="5"
-            app:layout_row="2"
-            android:text="F"/>
+            app:layout_row="2" />
 
         <TextView
             android:id="@+id/cg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="G"
             app:layout_column="6"
-            app:layout_row="2"
-            android:text="G"/>
+            app:layout_row="2" />
 
         <TextView
             android:id="@+id/ch"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="H"
             app:layout_column="7"
-            app:layout_row="2"
-            android:text="H"/>
+            app:layout_row="2" />
 
         <TextView
             android:id="@+id/da"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="1"
             app:layout_column="0"
-            app:layout_row="3"
-            android:text="1"/>
+            app:layout_row="3" />
 
         <TextView
             android:id="@+id/db"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="2"
             app:layout_column="1"
-            app:layout_row="3"
-            android:text="2"/>
+            app:layout_row="3" />
 
         <TextView
             android:id="@+id/dc"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="3"
             app:layout_column="2"
-            app:layout_row="3"
-            android:text="3"/>
+            app:layout_row="3" />
 
         <TextView
             android:id="@+id/dd"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="4"
             app:layout_column="3"
-            app:layout_row="3"
-            android:text="4"/>
+            app:layout_row="3" />
 
         <TextView
             android:id="@+id/de"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="5"
             app:layout_column="4"
-            app:layout_row="3"
-            android:text="5"/>
+            app:layout_row="3" />
 
         <TextView
             android:id="@+id/df"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="6"
             app:layout_column="5"
-            app:layout_row="3"
-            android:text="6"/>
+            app:layout_row="3" />
 
         <TextView
             android:id="@+id/dg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="7"
             app:layout_column="6"
-            app:layout_row="3"
-            android:text="7"/>
+            app:layout_row="3" />
 
         <TextView
             android:id="@+id/dh"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:text="8"
             app:layout_column="7"
-            app:layout_row="3"
-            android:text="8"/>
+            app:layout_row="3" />
 
 
     </android.support.v7.widget.GridLayout>

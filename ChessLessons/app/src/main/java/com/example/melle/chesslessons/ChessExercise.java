@@ -38,14 +38,11 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chess_exercise);
         getPuzzleNow();
-//        Button button50 = (Button)findViewById(R.id.button5);
-//        verdwijn(button50);
         initialiseClickers();
-
-        verdwijn1();
 
     }
 
+    // {"title":"The Quiet Moves are the Hardest","comments":"","url":"https:\/\/www.chess.com\/forum\/view\/daily-puzzles\/7192007---the-quiet-moves-are-the-hardest","publish_time":1184828400,"fen":"8\/2N2k1p\/5pp1\/4p3\/p5PP\/1Pn2Q2\/3q1PK1\/8 w - - 0 1","pgn":"[FEN \"8\/2N2k1p\/5pp1\/4p3\/p5PP\/1Pn2Q2\/3q1PK1\/8 w - - 0 1\"]\r\n[PlyCount \"13\"]\r\n1. Qc6 {threatens Qe8+} Kg7 (1... Qd8 2. Qxc3 a3 3. Qc4+ Ke7 4.\r\nNd5+ Kf8 5. b4 {W has a N for a P}) 2. Qe8 Qd6 3. Ne6+ Kh6 4. Qf7 {\r\nand mate on g7} Qc6+ 5. Kh2 Qd7 6. Qxd7 axb3 7. Qg7# *","image":"https:\/\/www.chess.com\/dynboard?fen=8\/2N2k1p\/5pp1\/4p3\/p5PP\/1Pn2Q2\/3q1PK1\/8%20w%20-%20-%200%201&size=2"}
     String fen = "8/5pNk/2K5/6P1/2r5/8/6B1/8 w - - 0 1";
     String pgn = "[Date \"????.??.??\"]\r\n" +
             "[Result \"*\"]\r\n" +
@@ -64,7 +61,34 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
 
             ImageView img = (ImageView) findViewById(resID);
+            img.setVisibility(View.VISIBLE);
             verdwijn2(img);
+        }
+
+        for (int i = 0; i < 12; i++) {
+            int column = i % 6 + 1;
+            int row = 1 + i / 6;
+            char c = (char) (column + 96);
+            char d = (char) (row + 96);
+
+            String buttonID = String.valueOf(d) + String.valueOf(c);
+            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            ImageView img = (ImageView) findViewById(resID);
+            img.setVisibility(View.INVISIBLE);
+            tevoorschijn(img);
+        }
+
+        for (int i = 0; i < 16; i++) {
+            int column = i % 8 + 1;
+            int row = 3 + i / 8;
+            char c = (char) (column + 96);
+            char d = (char) (row + 96);
+
+            String buttonID = String.valueOf(d) + String.valueOf(c);
+            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            TextView img = (TextView) findViewById(resID);
+            img.setVisibility(View.INVISIBLE);
+            tevoorschijn2(img);
         }
     }
 
@@ -75,6 +99,23 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             }
         }, 3000);
     }
+
+    public void tevoorschijn(final ImageView img) {
+        img.postDelayed(new Runnable() {
+            public void run() {
+                img.setVisibility(View.VISIBLE);
+            }
+        }, 3000);
+    }
+
+    public void tevoorschijn2(final TextView img) {
+        img.postDelayed(new Runnable() {
+            public void run() {
+                img.setVisibility(View.VISIBLE);
+            }
+        }, 3000);
+    }
+
 
     public void confirmMove(View view) {
         EditText edit  = (EditText)findViewById(R.id.editText2);
@@ -130,14 +171,10 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     public void getPuzzleNow() {
 
+        //verdwijn1();
         GetPuzzle request = new GetPuzzle(getApplicationContext());
         request.GetPuzzle(this);
-        //Log.d("qwerty", String.valueOf(request.callbackk.questions));
 
-        // hier json opvragen
-
-//        String pgn = "\"[Date \\\"????.??.??\\\"]\\r\\n[Result \\\"*\\\"]\\r\\n[FEN \\\"4r3/5RBp/3pk3/6pQ/2P1rp2/2n5/4R3/7K w - - 0 1\\\"]\\r\\n\\r\\n1. Qxh7 Rh8 2. Bxh8 d5 3. Qg6#\\r\\n*\"";
-//        String fen = "4r3/5RBp/3pk3/6pQ/2P1rp2/2n5/4R3/7K w - - 0 1";
         Log.d("test3421312", fen);
         String[] fenStringAndColour = fenStringSplit(fen);
         String fenString = fenStringAndColour[0];
@@ -780,28 +817,99 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         EditText edit  = (EditText)findViewById(R.id.editText2);
         String editt = edit.getText().toString();
 
-        Log.d("hoi", String.valueOf(v.getId()));
         switch (v.getId()) {
 
             case R.id.aa:
                 editt = editt + "P";
                 break;
             case R.id.ab:
-                Log.d("klokhuishoofd1", "jochem");
+                editt = editt + "R";
                 break;
             case R.id.ac:
-                Log.d("klokhuishoofd3", "jochem");
+                editt = editt + "N";
                 break;
             case R.id.ad:
-                Log.d("klokhuishoofd4", "jochem");
+                editt = editt + "B";
                 break;
             case R.id.ae:
-                Log.d("klokhuishoofd5", "jochem");
+                editt = editt + "K";
                 break;
             case R.id.af:
-                Log.d("klokhuishoofd6", "jochem");
+                editt = editt + "Q";
                 break;
+
+            case R.id.ba:
+                editt = editt + "R";
+                break;
+            case R.id.bb:
+                editt = editt + "N";
+                break;
+            case R.id.bc:
+                editt = editt + "B";
+                break;
+            case R.id.bd:
+                editt = editt + "K";
+                break;
+            case R.id.be:
+                editt = editt + "Q";
+                break;
+            case R.id.bf:
+                editt = editt + "P";
+                break;
+
+            case R.id.ca:
+                editt = editt + "a";
+                break;
+            case R.id.cb:
+                editt = editt + "b";
+                break;
+            case R.id.cc:
+                editt = editt + "c";
+                break;
+            case R.id.cd:
+                editt = editt + "d";
+                break;
+            case R.id.ce:
+                editt = editt + "e";
+                break;
+            case R.id.cf:
+                editt = editt + "f";
+                break;
+            case R.id.cg:
+                editt = editt + "g";
+                break;
+            case R.id.ch:
+                editt = editt + "h";
+                break;
+
+            case R.id.da:
+                editt = editt + "1";
+                break;
+            case R.id.db:
+                editt = editt + "2";
+                break;
+            case R.id.dc:
+                editt = editt + "3";
+                break;
+            case R.id.dd:
+                editt = editt + "4";
+                break;
+            case R.id.de:
+                editt = editt + "5";
+                break;
+            case R.id.df:
+                editt = editt + "6";
+                break;
+            case R.id.dg:
+                editt = editt + "7";
+                break;
+            case R.id.dh:
+                editt = editt + "8";
+                break;
+
         }
+
+        edit.setText(editt);
     }
 
     public void initialiseClickers() {
