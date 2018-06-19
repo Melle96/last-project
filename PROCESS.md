@@ -33,3 +33,5 @@ Het is me gelukt om via de API een puzzel op te vragen en de zetten te kunnen ve
 # dag 11, 18 juni
 Promotie en rokade staan erin. De enige zetten die er nog niet in staan zijn en passant en een pion die slaand promoveert. Dit kan ik vooralsnog niet erin zetten aangezien ik niet weet hoe chess.com dit noteert in de api. Vandaag ga ik beginnen met het gebruiksvriendelijk maken van de de puzzel. Zo moet de gebruiker zelf zetten kunnen doen en daaruit scores kunnen krijgen.
 
+# dag 12, 19 juni
+Gisteren ben ik begonnen met het gebruiksvriendelijk maken van de puzzel. Het is nu mogelijk om de puzzel te laten verdwijnen na een aantal seconden. Ook is het mogelijk om zetten in te typen of in te voeren door te klikken op stukken en coördinaten. Vandaag wil ik gaan werken aan goed of fout beantwooren van de opgave. Hierbij wordt duidelijk wanneer er een fout wordt gemaakt. Dan kan de schaker de opgave opnieuw beantwooden. Verder moet een opgave ook goed gerekend worden als alle zetten goed zijn.
