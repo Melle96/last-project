@@ -10,24 +10,24 @@
         android:id="@+id/button4"
         android:layout_width="188dp"
         android:layout_height="67dp"
+        android:onClick="puzzel"
         android:text="puzzel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="0.418"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12"
-        android:onClick="puzzel"/>
+        app:layout_constraintVertical_bias="0.146" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="220dp"
-        android:layout_height="52dp"
+        android:layout_height="75dp"
+        android:onClick="rating"
         android:text="rating"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="rating"/>
+        app:layout_constraintVertical_bias="0.426" />
 </android.support.constraint.ConstraintLayout>

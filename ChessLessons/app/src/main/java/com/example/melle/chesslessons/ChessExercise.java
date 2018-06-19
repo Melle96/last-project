@@ -90,6 +90,9 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             img.setVisibility(View.INVISIBLE);
             tevoorschijn2(img);
         }
+        TextView img = (TextView) findViewById(R.id.textView);
+        img.setVisibility(View.INVISIBLE);
+        tevoorschijn2(img);
     }
 
     public void verdwijn2(final ImageView img) {
@@ -132,6 +135,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             Log.d("chessmoves2", coordinates);
             coordinates = doezett(coordinates, colour, zet);
             zettenindex++;
+            doezet();
         }
 
         else{
@@ -170,8 +174,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     String chessMoves[];
 
     public void getPuzzleNow() {
-
-        //verdwijn1();
+        changeText("");
         GetPuzzle request = new GetPuzzle(getApplicationContext());
         request.GetPuzzle(this);
 
@@ -179,7 +182,20 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         String[] fenStringAndColour = fenStringSplit(fen);
         String fenString = fenStringAndColour[0];
 
+        Log.d("test3421312ff", fenString);
+
         coordinates = fedToString(fenString);
+
+
+        Log.d("coordinatesjochem", coordinates);
+
+        String[] coordinatesSplitted = fenString.split("");
+
+        // bord returnen in letters
+
+        returnBoardInText(fenString);
+
+
         createbord(coordinates);
 
         zettenindex = 0;
@@ -192,18 +208,65 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         chessMoves = zettenn(pgn);
     }
 
+    public void changeText(String text) {
+        TextView view = (TextView) findViewById(R.id.textView3);
+        view.setText(text);
+    }
+
+    public void returnBoardInText(String fenString){
+        String white = "";
+        String black = "";
+
+        int j = 0;
+        for (int i = 0; i < 64;) {
+
+            Log.d("i", String.valueOf(i));
+
+            if (Character.isDigit(fenString.charAt(j))) {
+                int index = Integer.parseInt(String.valueOf(fenString.charAt(j)));
+                i = i + index;
+                Log.d("char1", String.valueOf(fenString.charAt(j)));
+                j++;
+            }
+
+            else {
+                int column = i % 8 + 1;
+                int row = 8 - (i - i % 8) / 8;
+                char c = (char) (column + 96);
+
+                Log.d("column", String.valueOf(column));
+                Log.d("row", String.valueOf(row));
+                Log.d("char", String.valueOf(fenString.charAt(j)));
+
+                if (Character.isUpperCase(fenString.charAt(j))){
+                    white = white + String.valueOf(fenString.charAt(j)) + c + row + " ";
+                    i++;
+                }
+                else if (Character.isLowerCase(fenString.charAt(j))){
+                    black = black + String.valueOf(Character.toUpperCase(fenString.charAt(j))) + c + row + " ";
+                    i++;
+                }
+                j++;
+            }
+        }
+
+        TextView text = (TextView) findViewById(R.id.textView);
+        text.setText("Wit: "+ white +"\n" + "Zwart: "+ black);
+    }
+
+
     // zetten doen
 
-
-    public void doezet(View view) {
+    public void doezet() {
         if (zettenindex == chessMoves.length) {
-            getPuzzleNow();
+            changeText("goed gedaan!");
         } else {
             int colour = ((colourOriginal + zettenindex) % 2);
             String zet = chessMoves[zettenindex];
             Log.d("chessmoves", chessMoves[zettenindex]);
             Log.d("chessmoves2", coordinates);
             coordinates = doezett(coordinates, colour, zet);
+            changeText(zet);
             zettenindex++;
         }
     }
@@ -523,6 +586,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
 
             ImageView img = (ImageView) findViewById(resID);
+            img.setVisibility(View.INVISIBLE);
 
             if (array_coordinates[i + 1].equals("r")) {
                 img.setImageResource(R.drawable.blackrook);
@@ -942,4 +1006,12 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         }
     }
 
+    public void doezetttt(View view) {
+        doezet();
+        doezet();
+    }
+
+    public void showBoard(View view) {
+        verdwijn1();
+    }
 }

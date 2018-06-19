@@ -7,6 +7,18 @@
     tools:context=".ChessExercise">
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.964" />
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="107dp"
         android:layout_height="44dp"
@@ -18,12 +30,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.987" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="352dp"
+        android:layout_height="141dp"
+        android:text="TextView"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.559" />
+
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="44dp"
-        android:onClick="doezet"
-        android:text="zettendoen"
+        android:onClick="doezetttt"
+        android:text="hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
@@ -52,15 +76,15 @@
         android:text="bevestig"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.965" />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="47dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
@@ -70,6 +94,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.817" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:onClick="showBoard"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
 
     <android.support.v7.widget.GridLayout
         android:id="@+id/gridLayout2"
@@ -652,13 +689,13 @@
         android:layout_height="180dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:columnCount="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266"
+        app:layout_constraintVertical_bias="0.048"
         app:rowCount="8">
 
         <ImageView

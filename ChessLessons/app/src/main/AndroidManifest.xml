@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChessExercise" />
+        <activity android:name=".ChessExercise"
+            android:screenOrientation="portrait"/>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".RatingActivity"></activity>
