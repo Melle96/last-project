@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "1063677292824",
+    "firebase_url": "https://cheessons-37769.firebaseio.com",
+    "project_id": "cheessons-37769",
+    "storage_bucket": "cheessons-37769.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063677292824:android:022a6ad071a58748",
+        "android_client_info": {
+          "package_name": "com.example.melle.chesslessons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063677292824-bkmsvt9jqtjuj6ro6fn0h9k4mo6vmj29.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.melle.chesslessons",
+            "certificate_hash": "f847a012e822038f45d090528677d5db2ef6e12e"
+          }
+        },
+        {
+          "client_id": "1063677292824-jm3664reegrp268tek9j75c9db9o17m3.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1063677292824-jm3664reegrp268tek9j75c9db9o17m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWYKU2DfG7m3qqWPAEYn47u7WOxJil5qs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063677292824-jm3664reegrp268tek9j75c9db9o17m3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

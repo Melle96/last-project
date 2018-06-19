@@ -1,24 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/malevich4"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/puzzel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="chessExercise"
-        android:text="Aanmelden" />
+        android:layout_width="307dp"
+        android:layout_height="80dp"
+        android:background="@drawable/malevichorange"
+        android:onClick="logIn"
+        android:text="sign in"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registreer"
-        android:onClick="registreer"/>
+        android:layout_width="323dp"
+        android:layout_height="95dp"
+        android:background="@drawable/malevichyellow"
+        android:onClick="registreer"
+        android:text="register"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.961" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/whitemalevich"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="e-mail"
+        android:textColorHighlight="@android:color/black"
+        android:textColorLink="@android:color/black"
+        android:textCursorDrawable="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.219" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/whitemalevich"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="password"
+        android:textColorHighlight="@android:color/black"
+        android:textColorLink="@android:color/black"
+        android:textCursorDrawable="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.351" />
+
+</android.support.constraint.ConstraintLayout>
