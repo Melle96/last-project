@@ -47,11 +47,13 @@ public class MainActivity extends AppCompatActivity{
 
 
     public void logIn(View view) {
-        EditText edittext = (EditText) findViewById(R.id.editText);
-        String email = edittext.getText().toString();
-
-        EditText edittext2 = (EditText) findViewById(R.id.editText3);
-        String password = edittext2.getText().toString();
+//        EditText edittext = (EditText) findViewById(R.id.editText);
+//        String email = edittext.getText().toString();
+//
+//        EditText edittext2 = (EditText) findViewById(R.id.editText3);
+//        String password = edittext2.getText().toString();
+        String email = "hoi@j.nl";
+        String password = "qwerty";
 
         if (!password.equals("") && !email.equals("")) {
             mAuth.signInWithEmailAndPassword(email, password)
@@ -75,6 +77,10 @@ public class MainActivity extends AppCompatActivity{
                             // ...
                         }
                     });
+        }
+        else{
+            Toast.makeText(MainActivity.this, "e-mail or password incomplete.",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
