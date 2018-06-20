@@ -35,3 +35,7 @@ Promotie en rokade staan erin. De enige zetten die er nog niet in staan zijn en 
 
 # dag 12, 19 juni
 Gisteren ben ik begonnen met het gebruiksvriendelijk maken van de puzzel. Het is nu mogelijk om de puzzel te laten verdwijnen na een aantal seconden. Ook is het mogelijk om zetten in te typen of in te voeren door te klikken op stukken en coördinaten. Vandaag wil ik gaan werken aan goed of fout beantwooren van de opgave. Hierbij wordt duidelijk wanneer er een fout wordt gemaakt. Dan kan de schaker de opgave opnieuw beantwooden. Verder moet een opgave ook goed gerekend worden als alle zetten goed zijn.
+
+# dag 13, 20 juni
+Gisteren heb ik gezorgd dat er ingelogd en geregistreerd kan worden met firebase. Ook is het mogelijk om een knop in te drukken bij schaakpuzzels waardoor het schaakbord even zichtbaar wordt. Als het bord dan na 3 seconden automatisch verdwijnt, verschijnt de oorspronkelijke (begin schaakpuzzel) stand in notatie in beeld. Ook staan de stukken in beeld om aan te klikken waardoor er een notatie kan worden ingegeven. Vandaag ga ik verder met firebase, allereerst wil ik het aantal goede puzzels opslaan per gebruiker, dit kan ik dan later uitbreiden.
+
