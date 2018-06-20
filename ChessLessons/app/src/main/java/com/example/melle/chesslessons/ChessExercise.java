@@ -12,6 +12,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -257,9 +265,13 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     // zetten doen
 
+
+
     public void doezet() {
         if (zettenindex == chessMoves.length) {
+            Log.d("jochemX", "jwz");
             changeText("goed gedaan!");
+            readFromDB();
         } else {
             int colour = ((colourOriginal + zettenindex) % 2);
             String zet = chessMoves[zettenindex];
@@ -1013,5 +1025,48 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     public void showBoard(View view) {
         verdwijn1();
+    }
+
+    public void addToDB(Score value) {
+
+        String UID = "unknown";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            UID = user.getUid();
+        }
+
+        String correct = String.valueOf(Integer.parseInt(value.correct) + 1);
+        Log.d("jochemXI","");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("scores");
+        Score scoreee = new Score(correct,value.wrong, value.time);
+
+        myRef.child(UID).setValue(scoreee);
+    }
+
+    public void readFromDB() {
+        // Read from the database
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            final String UID = user.getUid();
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("scores");
+
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Score value = dataSnapshot.child(UID).getValue(Score.class);
+                    addToDB(value);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w("failed", "Failed to read value.", error.toException());
+                }
+            });
+        }
     }
 }

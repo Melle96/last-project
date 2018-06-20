@@ -2,15 +2,17 @@ package com.example.melle.chesslessons;
 
 public class Score {
 
-    public String scoree;
-    public String namee;
+    public String correct;
+    public String wrong;
+    public String time;
 
     public Score(){
 
     }
 
-    public Score(String score, String name) {
-        this.scoree = score;
-        this.namee = name;
+    public Score(String correct, String wrong, String time) {
+        this.correct = correct;
+        this.wrong = wrong;
+        this.time = time;
     }
 }

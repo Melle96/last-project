@@ -1,6 +1,9 @@
 package com.example.melle.chesslessons;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,14 +48,13 @@ public class MainActivity extends AppCompatActivity{
         updateUI(currentUser);
     }
 
-
     public void logIn(View view) {
 //        EditText edittext = (EditText) findViewById(R.id.editText);
 //        String email = edittext.getText().toString();
 //
 //        EditText edittext2 = (EditText) findViewById(R.id.editText3);
 //        String password = edittext2.getText().toString();
-        String email = "hoi@j.nl";
+        final String email = "hoi@j.nl";
         String password = "qwerty";
 
         if (!password.equals("") && !email.equals("")) {
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity{
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 updateUI(user);
                                 chessExercise();
+
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w("loginfailed", "signInWithEmail:failure", task.getException());
@@ -98,4 +101,13 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
+
+//    public void SharedPreferences(String email) {
+//
+//        SharedPreferences sharedpreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedpreferences.edit();
+//
+//        editor.putString("email", email);
+//        editor.apply();
+//    }
 }
