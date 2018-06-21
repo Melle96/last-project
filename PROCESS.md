@@ -39,3 +39,7 @@ Gisteren ben ik begonnen met het gebruiksvriendelijk maken van de puzzel. Het is
 # dag 13, 20 juni
 Gisteren heb ik gezorgd dat er ingelogd en geregistreerd kan worden met firebase. Ook is het mogelijk om een knop in te drukken bij schaakpuzzels waardoor het schaakbord even zichtbaar wordt. Als het bord dan na 3 seconden automatisch verdwijnt, verschijnt de oorspronkelijke (begin schaakpuzzel) stand in notatie in beeld. Ook staan de stukken in beeld om aan te klikken waardoor er een notatie kan worden ingegeven. Vandaag ga ik verder met firebase, allereerst wil ik het aantal goede puzzels opslaan per gebruiker, dit kan ik dan later uitbreiden.
 
+# dag 14, 21 juni
+Gisteren heb ik geregeld dat het mogelijk is om aantal goede opgaven, foute opgaven en totale tijd op te slaan. Dit moet echter nog wel aangepast kunnen worden doot het uitvoeren van puzzels. Dat is dan ook mijn doel voor vandaag. Verder heb ik gisteren wat gewerkt aan de opmaak van de layout. Het mooi structureren van de code probeer ik morgen te doen. Het is namelijk eerst belangrijk dat de functionaliteiten af zijn.
+
+
