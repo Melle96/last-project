@@ -8,32 +8,46 @@
     tools:context=".MenuActivity">
 
     <Button
-        android:id="@+id/button4"
+    android:id="@+id/button4"
+    android:layout_width="118dp"
+    android:layout_height="73dp"
+    android:background="@drawable/malevichyellow"
+    android:onClick="puzzel"
+    android:text="puzzel"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.917"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.036" />
+
+    <Button
+        android:id="@+id/button7"
         android:layout_width="118dp"
         android:layout_height="73dp"
-        android:background="@drawable/malevichyellow"
-        android:onClick="puzzel"
-        android:text="puzzel"
+        android:background="@drawable/malevichgreennn"
+        android:onClick="instruction"
+        android:text="instruction"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintHorizontal_bias="0.902"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.113" />
+        app:layout_constraintVertical_bias="0.442" />
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="108dp"
-        android:layout_height="83dp"
+        android:layout_width="114dp"
+        android:layout_height="66dp"
         android:background="@drawable/malevichbeige"
         android:onClick="rating"
         android:text="rating"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.238" />
 
     <ImageView
         android:id="@+id/imageView"

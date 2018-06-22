@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/malevich11"
     tools:context=".RatingActivity">
 
     <TextView
         android:id="@+id/correct"
-        android:layout_width="100dp"
+        android:layout_width="130dp"
         android:layout_height="50dp"
+        android:background="@drawable/whitemalevich"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +22,9 @@
 
     <TextView
         android:id="@+id/wrong"
-        android:layout_width="100dp"
+        android:layout_width="130dp"
         android:layout_height="50dp"
+        android:background="@drawable/whitemalevich"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,8 +34,9 @@
 
     <TextView
         android:id="@+id/time"
-        android:layout_width="100dp"
+        android:layout_width="130dp"
         android:layout_height="50dp"
+        android:background="@drawable/whitemalevich"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

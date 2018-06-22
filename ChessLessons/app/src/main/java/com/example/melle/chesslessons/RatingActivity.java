@@ -71,13 +71,13 @@ public class RatingActivity extends AppCompatActivity {
 
     public void setText(Score score){
         TextView correct = (TextView) findViewById(R.id.correct);
-        correct.setText(score.correct);
+        correct.setText("correct: " + score.correct);
 
         TextView wrong = (TextView) findViewById(R.id.wrong);
-        wrong.setText(score.wrong);
+        wrong.setText("wrong: " + score.wrong);
 
         TextView time = (TextView) findViewById(R.id.time);
-        time.setText(score.time);
+        time.setText("time: " + score.time + "seconds");
     }
 
 

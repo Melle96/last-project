@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void logIn(View view) {
-        EditText edittext = (EditText) findViewById(R.id.editText);
-        String email = edittext.getText().toString();
-
-        EditText edittext2 = (EditText) findViewById(R.id.editText3);
-        String password = edittext2.getText().toString();
-//        final String email = "hoi@j.nl";
-//        String password = "qwerty";
+//        EditText edittext = (EditText) findViewById(R.id.editText);
+//        String email = edittext.getText().toString();
+//
+//        EditText edittext2 = (EditText) findViewById(R.id.editText3);
+//        String password = edittext2.getText().toString();
+        final String email = "hoi@j.nl";
+        String password = "qwerty";
 
         if (!password.equals("") && !email.equals("")) {
             mAuth.signInWithEmailAndPassword(email, password)
