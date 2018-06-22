@@ -42,4 +42,6 @@ Gisteren heb ik gezorgd dat er ingelogd en geregistreerd kan worden met firebase
 # dag 14, 21 juni
 Gisteren heb ik geregeld dat het mogelijk is om aantal goede opgaven, foute opgaven en totale tijd op te slaan. Dit moet echter nog wel aangepast kunnen worden doot het uitvoeren van puzzels. Dat is dan ook mijn doel voor vandaag. Verder heb ik gisteren wat gewerkt aan de opmaak van de layout. Het mooi structureren van de code probeer ik morgen te doen. Het is namelijk eerst belangrijk dat de functionaliteiten af zijn.
 
+# dag 15, 22 juni
+Ik heb gisteren een tijdje vast gezeten met het aanpassen van de scores in firebase. Dat is nu gelukt maar het heeft me veel tijd gekost waardoor ik niet veel verder ben gekomen. Het is nu wel zo dat de basisfunctionaliteiten af zijn. Hierdoor hoeft er alleen nog maar gespeeld te worden met de layout en de opmaak van de app. Verder is het belangrijk dat de schaakpuzzels mooi worden weergeven. Ook de laatste bugs van de API moeten eruit worden gehaald.
 
