@@ -15,4 +15,17 @@ public class Score {
         this.wrong = wrong;
         this.time = time;
     }
+
+    public String getCorrect() {
+        return correct;
+    }
+
+    public String getWrong() {
+        return wrong;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
 }

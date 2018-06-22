@@ -1,13 +1,9 @@
 package com.example.melle.chesslessons;
 
-import android.animation.ObjectAnimator;
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,20 +20,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.Character.isUpperCase;
 import static java.lang.Integer.parseInt;
 import static java.lang.StrictMath.abs;
-
-//{"title":"Chapais, 1780","url":"https:\/\/www.chess.com\/forum\/view\/daily-puzzles\/1-2-2018-chapais-1780","publish_time":1514880000,"fen":"8\/8\/1n6\/8\/1K5k\/3P4\/B7\/8 w - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8\/8\/1n6\/8\/1K5k\/3P4\/B7\/8 w - - 0 1\"]\r\n\r\n1. Be6 Na8 2. Kc5 Nc7 3. Bf7 Na6+ 4. Kb5 Nb8 5. Be8 Kg5 6. Kb6 Kf4 7. Bb5\r\nKe3 8. Kc7\r\n*","image":"https:\/\/www.chess.com\/dynboard?fen=8\/8\/1n6\/8\/1K5k\/3P4\/B7\/8%20w%20-%20-%200%201&size=2"}
-//{"title":"Mate in 4","comments":"","url":"https://www.chess.com/forum/view/daily-puzzles/692015---mate-in-4","publish_time":1433833200,"fen":"1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1\"]\r\n\r\n1. Bg6+ Kg8 2. Qa2+ d5 3. Qxd5+ Qf7 4. Qxf7#\r\n*","image":"https://www.chess.com/dynboard?fen=1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1%20w%20-%20-%200%201&size=2"}
-
-//black
-//{"title":"Short and Decisive","comments":"","url":"https:\/\/www.chess.com\/forum\/view\/daily-puzzles\/9292009---short-and-decisive","publish_time":1254207600,"fen":"4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1 b - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1 b - - 0 1\"]\r\n\r\n1...Rxd2 2. Rxd2 Nf3+\r\n*","image":"https:\/\/www.chess.com\/dynboard?fen=4Q3\/5p1k\/7p\/p1p3nq\/P2r2p1\/6P1\/3NRP2\/6K1%20b%20-%20-%200%201&size=2"}
-
 
 public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callback , View.OnClickListener {
 
@@ -51,12 +38,55 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     }
 
     // {"title":"The Quiet Moves are the Hardest","comments":"","url":"https:\/\/www.chess.com\/forum\/view\/daily-puzzles\/7192007---the-quiet-moves-are-the-hardest","publish_time":1184828400,"fen":"8\/2N2k1p\/5pp1\/4p3\/p5PP\/1Pn2Q2\/3q1PK1\/8 w - - 0 1","pgn":"[FEN \"8\/2N2k1p\/5pp1\/4p3\/p5PP\/1Pn2Q2\/3q1PK1\/8 w - - 0 1\"]\r\n[PlyCount \"13\"]\r\n1. Qc6 {threatens Qe8+} Kg7 (1... Qd8 2. Qxc3 a3 3. Qc4+ Ke7 4.\r\nNd5+ Kf8 5. b4 {W has a N for a P}) 2. Qe8 Qd6 3. Ne6+ Kh6 4. Qf7 {\r\nand mate on g7} Qc6+ 5. Kh2 Qd7 6. Qxd7 axb3 7. Qg7# *","image":"https:\/\/www.chess.com\/dynboard?fen=8\/2N2k1p\/5pp1\/4p3\/p5PP\/1Pn2Q2\/3q1PK1\/8%20w%20-%20-%200%201&size=2"}
-    String fen = "8/5pNk/2K5/6P1/2r5/8/6B1/8 w - - 0 1";
-    String pgn = "[Date \"????.??.??\"]\r\n" +
-            "[Result \"*\"]\r\n" +
-            "[FEN \"8/5pNk/2K5/6P1/2r5/8/6B1/8 w - - 0 1\"]\r\n\r" +
-            "\n" +
-            "1. Kd5 Rg4 2. Bh3 Rg3 3. Ne6 Rxh3 (3... fxe6+ 4. Bxe6) 4. g6+ Kxg6 (4... fxg6 5. Ng5+) 5. Nf4+";
+    String fen = "3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1";
+    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1\"]\r\n\r\n1. Qe7+ Bf7 2. Qxf6+ Kxf6 3. Bd4# \r\n*";
+    String coordinates;
+    int colourOriginal;
+    int zettenindex;
+    String chessMoves[];
+    long startTime;
+    int correctPuzzleIndex;
+
+    // er wordt een schaakpuzzel verkregen
+    public void getPuzzleNow() {
+        correctPuzzleIndex = 0;
+        startTime = System.currentTimeMillis();
+        Log.d("startTime", String.valueOf(startTime));
+        changeText("");
+        GetPuzzle request = new GetPuzzle(getApplicationContext());
+        request.GetPuzzle(this);
+
+        Log.d("test3421312", fen);
+        String[] fenStringAndColour = fenStringSplit(fen);
+        String fenString = fenStringAndColour[0];
+
+        Log.d("test3421312ff", fenString);
+
+        coordinates = fedToString(fenString);
+
+
+        Log.d("coordinatesjochem", coordinates);
+
+        String[] coordinatesSplitted = fenString.split("");
+
+        // bord returnen in letters
+
+        returnBoardInText(fenString);
+
+
+        createbord(coordinates);
+
+        zettenindex = 0;
+        colourOriginal = 1;
+        if (fenStringAndColour[1].equals("w")) {
+            colourOriginal = 0;
+        }
+
+
+        chessMoves = zettenn(pgn);
+    }
+
+
 
     public void verdwijn1() {
 
@@ -147,8 +177,17 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         }
 
         else{
+            correctPuzzleIndex++;
+            if (correctPuzzleIndex == 1) {
+                changeText("Jammer!");
+                int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
+                readFromDB(estimatedTime, "wrong");
+                correctPuzzleIndex++;
+            }
+            // puzzel is incorrect
 
-            // fout gemaakt
+
+
         }
 
     }
@@ -176,45 +215,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     }
 
 
-    String coordinates;
-    int colourOriginal;
-    int zettenindex;
-    String chessMoves[];
 
-    public void getPuzzleNow() {
-        changeText("");
-        GetPuzzle request = new GetPuzzle(getApplicationContext());
-        request.GetPuzzle(this);
-
-        Log.d("test3421312", fen);
-        String[] fenStringAndColour = fenStringSplit(fen);
-        String fenString = fenStringAndColour[0];
-
-        Log.d("test3421312ff", fenString);
-
-        coordinates = fedToString(fenString);
-
-
-        Log.d("coordinatesjochem", coordinates);
-
-        String[] coordinatesSplitted = fenString.split("");
-
-        // bord returnen in letters
-
-        returnBoardInText(fenString);
-
-
-        createbord(coordinates);
-
-        zettenindex = 0;
-        colourOriginal = 1;
-        if (fenStringAndColour[1].equals("w")) {
-            colourOriginal = 0;
-        }
-
-
-        chessMoves = zettenn(pgn);
-    }
 
     public void changeText(String text) {
         TextView view = (TextView) findViewById(R.id.textView3);
@@ -267,12 +268,23 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
 
 
+
     public void doezet() {
         if (zettenindex == chessMoves.length) {
-            Log.d("jochemX", "jwz");
-            changeText("goed gedaan!");
-            readFromDB();
-        } else {
+
+            if (correctPuzzleIndex == 0) {
+                changeText("Great job!");
+                int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
+                readFromDB(estimatedTime, "correct");
+                correctPuzzleIndex =+2;
+            }
+
+            else if (correctPuzzleIndex == 1){
+                changeText("Now it's correct");
+            }
+        }
+
+        else {
             int colour = ((colourOriginal + zettenindex) % 2);
             String zet = chessMoves[zettenindex];
             Log.d("chessmoves", chessMoves[zettenindex]);
@@ -1044,21 +1056,95 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         myRef.child(UID).setValue(scoreee);
     }
 
-    public void readFromDB() {
-        // Read from the database
+        // addListenerForSingleValueEvent(new ValueEventListener()
+//    public void readFromDB(final int time) {
+//        // Read from the database
+//        final int[] index = {0,0};
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user != null) {
+//            final String UID = user.getUid();
+//
+//            FirebaseDatabase database = FirebaseDatabase.getInstance();
+//            final DatabaseReference myRef = database.getReference("scores");
+//
+//            myRef.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    Score value = dataSnapshot.child(UID).getValue(Score.class);
+//                    String valueCorrect = String.valueOf(Integer.parseInt(value.correct) + 1);
+//                    String totalTime = String.valueOf(Integer.parseInt(value.time) +
+//                            time);
+//                    Log.d("time", String.valueOf(time));
+//                    Log.d("time_total", String.valueOf(totalTime));
+//
+//                    if (index[0]== 0) {
+//                        try {
+//                            myRef.child(UID).child("correct").setValue(valueCorrect);
+//                            index[0]++;
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    if (index[1]== 0) {
+//                        try {
+//                            myRef.child(UID).child("time").setValue(totalTime);
+//                            index[1]++;
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError error) {
+//                    // Failed to read value
+//                    Log.w("failed", "Failed to read value.", error.toException());
+//                }
+//            });
+//        }
+//    }
 
+    public void readFromDB(final int time, final String result) {
+        // Read from the database
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             final String UID = user.getUid();
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("scores");
+            final DatabaseReference myRef = database.getReference("scores");
 
-            myRef.addValueEventListener(new ValueEventListener() {
+            myRef.addListenerForSingleValueEvent(new ValueEventListener(){
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Score value = dataSnapshot.child(UID).getValue(Score.class);
-                    addToDB(value);
+                    String valueCorrect = String.valueOf(Integer.parseInt(value.correct) + 1);
+                    String totalTime = String.valueOf(Integer.parseInt(value.time) + time);
+                    String totalWrong = String.valueOf(Integer.parseInt(value.wrong) + 1);
+
+                    if (result.equals("correct")) {
+                        try {
+                            myRef.child(UID).child("correct").setValue(valueCorrect);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    else if (result.equals("wrong")) {
+                        try {
+                            myRef.child(UID).child("wrong").setValue(totalWrong);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    try {
+                        myRef.child(UID).child("time").setValue(totalTime);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
 
                 @Override
