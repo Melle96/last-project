@@ -45,3 +45,7 @@ Gisteren heb ik geregeld dat het mogelijk is om aantal goede opgaven, foute opga
 # dag 15, 22 juni
 Ik heb gisteren een tijdje vast gezeten met het aanpassen van de scores in firebase. Dat is nu gelukt maar het heeft me veel tijd gekost waardoor ik niet veel verder ben gekomen. Het is nu wel zo dat de basisfunctionaliteiten af zijn. Hierdoor hoeft er alleen nog maar gespeeld te worden met de layout en de opmaak van de app. Verder is het belangrijk dat de schaakpuzzels mooi worden weergeven. Ook de laatste bugs van de API moeten eruit worden gehaald.
 
+# dag 16, 25 juni
+Vandaag ga ik beginnen met het mooi maken van de code en de layout aan passen. Ook zal ik in de puzzel nog een beetje spelen in het laten verschijnen van het bord. Ook de kleur van de aan te klikken stukken zal moeten veranderen indien een opgave voor wit of zwart is.
+
+
