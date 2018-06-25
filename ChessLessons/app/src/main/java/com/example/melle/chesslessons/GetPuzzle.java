@@ -24,13 +24,13 @@ public class GetPuzzle extends JSONObject implements
 
 
     public interface Callback {
-        void gotQuestions(JSONObject questions);
-        void gotQuestionsError(String message);
+        void gotChessPuzzle(JSONObject questions);
+        void gotChessPuzzleError(String message);
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        callbackk.gotQuestionsError(error.getMessage());
+        callbackk.gotChessPuzzleError(error.getMessage());
     }
 
     @Override
@@ -38,7 +38,7 @@ public class GetPuzzle extends JSONObject implements
 
         JSONObject json;
         json = response;
-        callbackk.gotQuestions(json);
+        callbackk.gotChessPuzzle(json);
     }
 
 

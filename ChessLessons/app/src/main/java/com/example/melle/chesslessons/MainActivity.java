@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity{
 
-
+    // authenticatie initialiseren
     private FirebaseAuth mAuth;
 
     @Override
@@ -99,6 +99,11 @@ public class MainActivity extends AppCompatActivity{
 
     public void registreer(View view) {
         Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    public void puzzleToGo(View view) {
+        Intent intent = new Intent(MainActivity.this, ChessExercise.class);
         startActivity(intent);
     }
 
