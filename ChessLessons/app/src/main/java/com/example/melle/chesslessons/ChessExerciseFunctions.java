@@ -136,7 +136,7 @@ public class ChessExerciseFunctions {
         for (int j = 0; j < countOfMoves; j++) {
             FinalArrayWithMoves[j] = emmptyArray[j];
         }
-        
+
         return FinalArrayWithMoves;
     }
 

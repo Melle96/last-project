@@ -76,8 +76,9 @@ public class RatingActivity extends AppCompatActivity {
         TextView wrong = (TextView) findViewById(R.id.wrong);
         wrong.setText("wrong: " + score.wrong);
 
+        int timeInMinutes = Integer.parseInt(score.time)/60;
         TextView time = (TextView) findViewById(R.id.time);
-        time.setText("time: " + score.time + "seconds");
+        time.setText("time: " + timeInMinutes + " min");
     }
 
 

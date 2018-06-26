@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/chesssmokingg"
+    android:background="@drawable/chessimage"
     tools:context=".InstructionActivity">
 
     <TextView
@@ -23,8 +23,11 @@ Castling: O-O, O-O-O \n\n
 "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintHorizontal_bias="0.919"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.088"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
 </android.support.constraint.ConstraintLayout>

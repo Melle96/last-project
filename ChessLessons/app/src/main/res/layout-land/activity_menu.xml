@@ -42,7 +42,7 @@
         android:layout_height="60dp"
         android:background="@drawable/malevichbeige"
         android:onClick="rating"
-        android:text="rating"
+        android:text="statistics"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.284"
