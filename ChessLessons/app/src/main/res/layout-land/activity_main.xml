@@ -64,7 +64,7 @@
         android:background="@drawable/whitemalevich"
         android:ems="10"
         android:hint="password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColorHighlight="@android:color/black"
         android:textColorLink="@android:color/black"
         android:textCursorDrawable="@android:color/black"
