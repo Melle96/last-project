@@ -2,6 +2,7 @@ package com.example.melle.chesslessons;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -36,6 +37,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         initialiseClickers();
 
     }
+
     // initialiseer fen: startpositie schaakbord
     String fen = "3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1";
 
@@ -57,8 +59,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         correctPuzzleIndex = 0;
         startTime = System.currentTimeMillis();
 
-        // textvak met tegenzetten / resultaat vorige puzzel leegmaken
-        changeText("");
 
         // nieuwe puzzel via api verkrijgen
         GetPuzzle request = new GetPuzzle(getApplicationContext());
@@ -84,6 +84,9 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         if (fenStringAndColour[1].equals("w")) {
             colourOriginal = 0;
         }
+
+        // textvak met tegenzetten / resultaat vorige puzzel leegmaken
+        changeText2(colourOriginal);
 
         // kleur van de stukken klikkers wordt aangepast naar kleur
         changeColourPieceClickers(colourOriginal);
@@ -113,9 +116,9 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         }
 
         // initialiseren schaakstukklikkers
-        for (int i = 0; i < 6; i++) {
-            int column = i % 6 + 1;
-            int row = 1 + i / 6;
+        for (int i = 0; i < 7; i++) {
+            int column = i % 7 + 1;
+            int row = 1 + i / 7;
             char c = (char) (column + 96);
             char d = (char) (row + 96);
 
@@ -163,6 +166,14 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         TextView img = (TextView) findViewById(R.id.notationStartPostition);
         img.setVisibility(View.INVISIBLE);
         emerge2(img);
+
+        TextView img2 = (TextView) findViewById(R.id.displayMoves);
+        img2.setVisibility(View.INVISIBLE);
+        emerge2(img2);
+
+        TextView img3 = (TextView) findViewById(R.id.displayMoves2);
+        img3.setVisibility(View.INVISIBLE);
+        emerge2(img3);
     }
 
     // laat imageview verdwijnen voor aantal seconden
@@ -193,26 +204,37 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     }
 
 
+    // verkijgt notatie ingevuld door gebruiker en doet er eventueel een zet mee
     public void confirmMove(View view) {
-        EditText edit  = (EditText)findViewById(R.id.notationInText);
-        String editt = edit.getText().toString();
+
+        // notatie verkrijgen
+        TextView notation  = (TextView)findViewById(R.id.notationInText);
+        String notationUser = notation.getText().toString();
+
+        // komt zet overeen met antwoord
+        if (chessMoves[moveIndex].equals(notationUser)) {
 
 
-        if (chessMoves[moveIndex].equals(editt)) {
-            Log.d("erin", "erin");
+
+            // kleur aanpassen
             int colour = ((colourOriginal + moveIndex) % 2);
-            String zet = chessMoves[moveIndex];
-            Log.d("chessmoves", chessMoves[moveIndex]);
-            Log.d("chessmoves2", coordinates);
-            coordinates = makeChessMove(coordinates, colour, zet);
+            String move = chessMoves[moveIndex];
+
+            changeText(move, colour);
+
+            // coodinaten verkrijgen na schaakzet
+            coordinates = makeChessMove(coordinates, colour, move);
             moveIndex++;
-            makeChessMove();
+
+
+            makeChessMove2();
         }
+
 
         else{
             correctPuzzleIndex++;
             if (correctPuzzleIndex == 1) {
-                changeText("Jammer!");
+
                 int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
                 readFromDB(estimatedTime, "wrong");
                 correctPuzzleIndex++;
@@ -253,11 +275,43 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
 
     // tekst van zetten/resultaat puzzel veranderen
-    public void changeText(String text) {
-        TextView view = (TextView) findViewById(R.id.displayMoves);
-        view.setText(text);
+    public void changeText(String text, int colour) {
+        if (colour == 0) {
+            TextView view = (TextView) findViewById(R.id.displayMoves);
+            text =  view.getText()+ text  +"\r\n";
+            view.setText(text);
+        }
+
+        else {
+            TextView view = (TextView) findViewById(R.id.displayMoves2);
+            text = view.getText()+ text  + "\r\n";
+            view.setText(text);
+        }
     }
 
+    // tekst van zetten/resultaat leegmaken
+    public void changeText2(int colourOriginal) {
+        if (colourOriginal == 0) {
+            TextView view = (TextView) findViewById(R.id.displayMoves);
+            String text = "white (you)" + "\r\n";
+            view.setText(text);
+
+            TextView view2 = (TextView) findViewById(R.id.displayMoves2);
+            String text2 = "black" + "\r\n";
+            view2.setText(text2);
+        }
+        else{
+
+            TextView view = (TextView) findViewById(R.id.displayMoves);
+            String text = "black (you)" + '\n';
+            view.setText(text);
+
+            TextView view2 = (TextView) findViewById(R.id.displayMoves2);
+            String text2 = "white" + '\n';
+            view2.setText(text2);
+        }
+
+    }
 
     // startpositie schaakpuzzel in tekst weergeven
     public void returnBoardInText(String fenString){
@@ -301,20 +355,20 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
         // verander de startpositie in de textview
         TextView text = (TextView) findViewById(R.id.notationStartPostition);
-        text.setText("Wit: "+ white +"\n" + "Zwart: "+ black);
+        text.setText("White: "+ white +"\n" + "Black: "+ black);
     }
 
 
 
     // schaakzet doen
-    public void makeChessMove() {
+    public void makeChessMove2() {
 
         // alle zetten zijn uitgevoerd
         if (moveIndex == chessMoves.length) {
 
             // indien geen fout gemaakt
             if (correctPuzzleIndex == 0) {
-                changeText("Great job!");
+                //changeText("Great job!");
                 int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
                 readFromDB(estimatedTime, "correct");
                 correctPuzzleIndex =+ 2;
@@ -322,7 +376,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
             // indien wel een fout gemaakt
             else if (correctPuzzleIndex == 1){
-                changeText("Now it's correct");
+                //changeText("Now it's correct");
             }
         }
 
@@ -334,7 +388,8 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
             // coordinates aanpassen nadat zet gemaakt
             coordinates = makeChessMove(coordinates, colour, move);
-            changeText(move);
+
+            changeText(move, colour);
             moveIndex++;
         }
     }
@@ -357,42 +412,50 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     // maakt een overzichtelijkere string van FED-notatie
     public String fenToString(String fed) {
-        String coordinates = "";
-        String[] array = fed.split("");
-        int arrayLength = array.length;
 
+        // maak een lege string im fen in op te slaan
+        String coordinates = "";
+
+        // split fed in array
+        String[] FedArray = fed.split("");
+        int arrayLength = FedArray.length;
+
+        // itereren over array elementen
         for (int i = 1; i < arrayLength; i++) {
 
-            if (array[i].equals("r")) {
+            // kijken of arrayelement gelijk is aan stuk
+            if (FedArray[i].equals("r")) {
                 coordinates = coordinates + "r";
-            } else if (array[i].equals("n")) {
+            } else if (FedArray[i].equals("n")) {
 
                 coordinates = coordinates + "n";
-            } else if (array[i].equals("b")) {
+            } else if (FedArray[i].equals("b")) {
                 coordinates = coordinates + "b";
-            } else if (array[i].equals("q")) {
+            } else if (FedArray[i].equals("q")) {
                 coordinates = coordinates + "q";
-            } else if (array[i].equals("k")) {
+            } else if (FedArray[i].equals("k")) {
                 coordinates = coordinates + "k";
-            } else if (array[i].equals("p")) {
+            } else if (FedArray[i].equals("p")) {
                 coordinates = coordinates + "p";
-            } else if (array[i].equals("R")) {
+            } else if (FedArray[i].equals("R")) {
                 coordinates = coordinates + "t";
-            } else if (array[i].equals("N")) {
+            } else if (FedArray[i].equals("N")) {
                 coordinates = coordinates + "m";
-            } else if (array[i].equals("B")) {
+            } else if (FedArray[i].equals("B")) {
                 coordinates = coordinates + "c";
-            } else if (array[i].equals("Q")) {
+            } else if (FedArray[i].equals("Q")) {
                 coordinates = coordinates + "s";
-            } else if (array[i].equals("K")) {
+            } else if (FedArray[i].equals("K")) {
                 coordinates = coordinates + "l";
-            } else if (array[i].equals("P")) {
+            } else if (FedArray[i].equals("P")) {
                 coordinates = coordinates + "o";
-            } else if (array[i].equals("1") || array[i].equals("2") || array[i].equals("3") || array[i].equals("4") ||
-                    array[i].equals("5") || array[i].equals("6") || array[i].equals("7") || array[i].equals("8"))
+
+                // als er cijfer staat komen er zoveel nullen bij
+            } else if (FedArray[i].equals("1") || FedArray[i].equals("2") || FedArray[i].equals("3") || FedArray[i].equals("4") ||
+                    FedArray[i].equals("5") || FedArray[i].equals("6") || FedArray[i].equals("7") || FedArray[i].equals("8"))
 
             {
-                for (int j = 0; j < parseInt(array[i]); j++) {
+                for (int j = 0; j < parseInt(FedArray[i]); j++) {
                     coordinates = coordinates + "0";
                 }
             }
@@ -403,45 +466,49 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     // maak bord naar notatie
     public void createbord(String coordinates) {
-        String[] array_coordinates = coordinates.split("");
 
+        // split de coordinates in een array
+        String[] arrayCoordinates = coordinates.split("");
+
+        // itereer over het hele bord
         for (int i = 0; i < 64; i++) {
             int column = i % 8 + 1;
             int row = 8 - (i - i % 8) / 8;
-            char c = (char) (column + 96);
+            char columnChar = (char) (column + 96);
 
-            String buttonID = String.valueOf(c) + String.valueOf(row);
-            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            String buttonID = String.valueOf(columnChar) + String.valueOf(row);
+            int ID = getResources().getIdentifier(buttonID, "id", getPackageName());
 
-            ImageView img = (ImageView) findViewById(resID);
+            ImageView img = (ImageView) findViewById(ID);
             img.setVisibility(View.INVISIBLE);
 
-            if (array_coordinates[i + 1].equals("r")) {
+            // alle velden schaakbord juiste plaatje geven
+            if (arrayCoordinates[i + 1].equals("r")) {
                 img.setImageResource(R.drawable.blackrook);
-            } else if (array_coordinates[i + 1].equals("n")) {
+            } else if (arrayCoordinates[i + 1].equals("n")) {
 
                 img.setImageResource(R.drawable.blackknight);
-            } else if (array_coordinates[i + 1].equals("b")) {
+            } else if (arrayCoordinates[i + 1].equals("b")) {
                 img.setImageResource(R.drawable.blackbishop);
-            } else if (array_coordinates[i + 1].equals("q")) {
+            } else if (arrayCoordinates[i + 1].equals("q")) {
                 img.setImageResource(R.drawable.blackqueen);
-            } else if (array_coordinates[i + 1].equals("k")) {
+            } else if (arrayCoordinates[i + 1].equals("k")) {
                 img.setImageResource(R.drawable.blackking);
-            } else if (array_coordinates[i + 1].equals("p")) {
+            } else if (arrayCoordinates[i + 1].equals("p")) {
                 img.setImageResource(R.drawable.blackpawn);
-            } else if (array_coordinates[i + 1].equals("t")) {
+            } else if (arrayCoordinates[i + 1].equals("t")) {
                 img.setImageResource(R.drawable.whiterook);
-            } else if (array_coordinates[i + 1].equals("m")) {
+            } else if (arrayCoordinates[i + 1].equals("m")) {
                 img.setImageResource(R.drawable.whiteknight);
-            } else if (array_coordinates[i + 1].equals("c")) {
+            } else if (arrayCoordinates[i + 1].equals("c")) {
                 img.setImageResource(R.drawable.whitebishop);
-            } else if (array_coordinates[i + 1].equals("s")) {
+            } else if (arrayCoordinates[i + 1].equals("s")) {
                 img.setImageResource(R.drawable.whitequeen);
-            } else if (array_coordinates[i + 1].equals("l")) {
+            } else if (arrayCoordinates[i + 1].equals("l")) {
                 img.setImageResource(R.drawable.whiteking);
-            } else if (array_coordinates[i + 1].equals("o")) {
+            } else if (arrayCoordinates[i + 1].equals("o")) {
                 img.setImageResource(R.drawable.whitepawn);
-            } else if (array_coordinates[i + 1].equals("0")) {
+            } else if (arrayCoordinates[i + 1].equals("0")) {
                 img.setImageResource(0);
             }
         }
@@ -453,11 +520,12 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     public void changeEditText(View view) {
     }
 
+    // clickers voor stukken
     @Override
     public void onClick(View v) {
 
         // de notatieinvuller wordt aangepast
-        EditText edit  = (EditText)findViewById(R.id.notationInText);
+        TextView edit  = (TextView)findViewById(R.id.notationInText);
         String notation = edit.getText().toString();
 
         // voor elke klik wordt tekst bij notatie weergeven
@@ -480,6 +548,11 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 break;
             case R.id.af:
                 notation = notation + "Q";
+                break;
+            case R.id.ag:
+                if (notation != null && notation.length() > 0) {
+                    notation = notation.substring(0, notation.length() - 1);
+                }
                 break;
 
             case R.id.ba:
@@ -544,6 +617,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
         }
 
+        // tekst wordt neergezet in notatie EditText veld
         edit.setText(notation);
     }
 
@@ -552,9 +626,9 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     public void initialiseClickers() {
 
         // er wordt een clicker gezet op de imageviews
-        for (int i = 0; i < 6; i++) {
-            int column = i % 6 + 1;
-            int row = 1 + i / 6;
+        for (int i = 0; i < 7; i++) {
+            int column = i % 7 + 1;
+            int row = 1 + i / 7;
             char columnChar = (char) (column + 96);
             char rowChar = (char) (row + 96);
 
@@ -603,7 +677,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     }
 
     // indien de puzzel voor zwart is worden de clickers gewijzigd naar juiste kleur
-
     public void changeColourPieceClickers(int colour) {
 
         // er wordt een clicker gezet op de imageviews
@@ -618,6 +691,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             int ID = getResources().getIdentifier(buttonID, "id", getPackageName());
             ImageView img = (ImageView) findViewById(ID);
 
+            // verander de stukken naar wit
             if (colour == 0){
                 switch (ID) {
 
@@ -642,6 +716,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 }
             }
 
+            // verander de stukken naar zwart
             else if (colour == 1){
                 switch (ID) {
 
@@ -669,31 +744,33 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         }
     }
 
-    public void doezetttt(View view) {
-        makeChessMove();
-        makeChessMove();
+    // er wordt een hint toegepast: er wordt een zet gedaan met een tegenzet
+    public void hintForChessMove(View view) {
+        makeChessMove2();
+        makeChessMove2();
     }
 
+    // het schaakbord wordt even zichtbaar
     public void showBoard(View view) {
         showBoard();
     }
 
-    public void addToDB(Score value) {
-
-        String UID = "unknown";
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            UID = user.getUid();
-        }
-
-        String correct = String.valueOf(Integer.parseInt(value.correct) + 1);
-        Log.d("jochemXI","");
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("scores");
-        Score scoreee = new Score(correct,value.wrong, value.time);
-
-        myRef.child(UID).setValue(scoreee);
-    }
+//    public void addToDB(Score value) {
+//
+//        String UID = "unknown";
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user != null) {
+//            UID = user.getUid();
+//        }
+//
+//        String correct = String.valueOf(Integer.parseInt(value.correct) + 1);
+//        Log.d("jochemXI","");
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("scores");
+//        Score scoreee = new Score(correct,value.wrong, value.time);
+//
+//        myRef.child(UID).setValue(scoreee);
+//    }
 
         // addListenerForSingleValueEvent(new ValueEventListener()
 //    public void readFromDB(final int time) {
@@ -744,9 +821,12 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 //        }
 //    }
 
+    // er wordt gelezen van de database, ook wordt deze aangepast
     public void readFromDB(final int time, final String result) {
-        // Read from the database
+
+        // gebruiker wordt geselecteerd
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         if (user != null) {
             final String UID = user.getUid();
 
@@ -755,12 +835,15 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
             myRef.addListenerForSingleValueEvent(new ValueEventListener(){
                 @Override
+
+                // de waardes worden veranderd
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Score value = dataSnapshot.child(UID).getValue(Score.class);
                     String valueCorrect = String.valueOf(Integer.parseInt(value.correct) + 1);
                     String totalTime = String.valueOf(Integer.parseInt(value.time) + time);
                     String totalWrong = String.valueOf(Integer.parseInt(value.wrong) + 1);
 
+                    // indien correct, correct++
                     if (result.equals("correct")) {
                         try {
                             myRef.child(UID).child("correct").setValue(valueCorrect);
@@ -769,6 +852,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                         }
                     }
 
+                    // indien fout, wrong++
                     else if (result.equals("wrong")) {
                         try {
                             myRef.child(UID).child("wrong").setValue(totalWrong);
@@ -777,6 +861,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                         }
                     }
 
+                    // totale tijd besteed wordt aangepast
                     try {
                         myRef.child(UID).child("time").setValue(totalTime);
                     } catch (Exception e) {
@@ -797,7 +882,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
 
 
-    // doet een enkele zet
+    // doet een zet
     public String makeChessMove(String currentNotation, int colour, String move) {
 
         // zetten vrijmaken van eventuele \r of \n
@@ -821,8 +906,8 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         String piece;
 
         if (String.valueOf(pieceSort).equals("B")) {
-            // geeft loper de juiste kleur
-            Log.d("lopertje", move);
+
+            // / geeft loper de juiste kleur
             piece = "c";
             if (colour == 1) {
                 piece = "b";
@@ -869,18 +954,18 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
             // voer promotie uit
             if (move.length() > 3 && String.valueOf(move.charAt(move.length() - 2)).equals("=")) {
-                currentNotation = promotion(currentNotation, move, piece, colour);
+                currentNotation = ChessExerciseFunctions.promotion(currentNotation, move, piece, colour);
             }
 
             // voer lange rokade uit
             else if (move.equals("O-O-O")){
-                currentNotation = castling(currentNotation, colour, 1);
+                currentNotation = ChessExerciseFunctions.castling(currentNotation, colour, 1);
 
             }
 
             // voer korte rokade uit
             else if (move.equals("O-O")){
-                currentNotation = castling(currentNotation, colour, 0);
+                currentNotation = ChessExerciseFunctions.castling(currentNotation, colour, 0);
             }
 
         }
@@ -935,272 +1020,20 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
             // als er maar 1 stuk is van bepaalde kleur
             if (counter == 1) {
-                currentNotation = moveSinglePiece(currentNotation, move, String.valueOf(myList.get(0)), piece);
+                currentNotation = ChessExerciseFunctions.moveSinglePiece(currentNotation, move, String.valueOf(myList.get(0)), piece);
 
             }
 
             // als er meerdere stukken zijn van bepaalde kleur
             else if (counter > 1){
-                currentNotation = movePieceWithTwins(counter, move, currentNotation, myList, piece);
+                currentNotation = ChessExerciseFunctions.movePieceWithTwins(counter, move, currentNotation, myList, piece);
 
             }
         }
-        return currentNotation;
-    }
 
-
-
-
-    // verplaatst een enkel stuk over het bord
-    public String moveSinglePiece(String currentNotation, String move, String position, String piece) {
-
-
-        // de postitie waar het stuk vandaan komt verkijgen en laten verdwijnen
-        int positionToCome = Integer.parseInt(position);
-        currentNotation = currentNotation.substring(0, positionToCome) + '0' + currentNotation.substring(positionToCome + 1);
-
-        // positie waar stuk naartoe moet initialiseren
-        char character = move.charAt(move.length()-2);
-        int columnToGo = (int) Character.toLowerCase(character) - 97;
-        int rowToGo = 8 - Integer.parseInt(String.valueOf(move.charAt(move.length()-1)));
-        int positionToGo = 8 * rowToGo + columnToGo;
-
-        // stuk op juiste positie zichtbaar maken
-        currentNotation = currentNotation.substring(0, positionToGo) + piece + currentNotation.substring(positionToGo + 1);
-
-        // bord aanpassen
         createbord(currentNotation);
+        // notatie wordt teruggegeven
         return currentNotation;
-
     }
 
-
-
-
-
-    // verplaatst een stuk als er meerdere van op het bord staan
-    public String movePieceWithTwins(int counter, String zet, String huidigenotatie, List<Integer> myList, String piece) {
-
-        int index = 0;
-        int i = 0;
-        while (index != 1 && i != counter) {
-            int position = myList.get(i);
-            int column1 = position % 8;
-            int row1 = 8 - (position / 8);
-
-
-            char character = zet.charAt(zet.length()-2);
-            int column2 = (int) Character.toLowerCase(character) - 97;
-            int row2 = Integer.parseInt(String.valueOf(zet.charAt(zet.length()-1)));
-
-            // richting bepalen
-
-            int countt = 0;
-            int index2 = 0;
-            int direction[] = new int[2];
-            int indexvariabele = 0;
-            String pieceString = String.valueOf(zet.charAt(0));
-
-            // schuin
-            if ((pieceString.equals("Q") || pieceString.equals("B")) && abs(column2 - column1) == abs(row2 - row1)) {
-                indexvariabele = 1;
-                countt = abs(column2 - column1) - 1;
-
-                Log.d("lopertje", zet);
-                // richting loper bepalen
-                if (column2 > column1) {
-                    direction[0] = 1;
-                } else {
-                    direction[0] = -1;
-                }
-                if (row2 > row1) {
-                    direction[1] = 1;
-                } else {
-                    direction[1] = -1;
-                }
-            }
-
-            //recht
-            else if ((pieceString.equals("Q") || pieceString.equals("R")) && (column2 == column1 || row2 == row1)) {
-
-                indexvariabele = 1;
-                if (column2 == column1)
-                {
-                    countt = abs(row2 - row1) - 1;
-                } else {
-                    countt = abs(column2 - column1) - 1;
-                }
-
-
-                if (column2 > column1) {
-                    direction[0] = 1;
-                } else if (column2 < column1) {
-                    direction[0] = -1;
-                } else {
-                    direction[0] = 0;
-                }
-
-                if (row2 > row1) {
-                    direction[1] = 1;
-                } else if (row2 < row1) {
-                    direction[1] = -1;
-                } else {
-                    direction[1] = 0;
-                }
-            }
-
-
-            // pion recht
-            else if (pieceString.equals("P") && column2 == column1 && String.valueOf(huidigenotatie.charAt(8*(8-row2) + column2)).equals("0")
-                    && (abs(row2 - row1) == 1  || abs(row2 - row1) == 2)) {
-                indexvariabele = 1;
-                if (row2 > row1) {
-                    direction[1] = 1;
-                } else {
-                    direction[1] = -1;
-                }
-                direction[0] = 0;
-            }
-
-            // pion slaan
-
-            else if (pieceString.equals("P") && !String.valueOf(huidigenotatie.charAt(8*(8-row2) + column2)).equals("0")
-                    && abs(column2 - column1) == 1  && abs(row2 - row1) == 1) {
-
-                indexvariabele = 1;
-                if (column2 > column1) {
-                    direction[0] = 1;
-                } else {
-                    direction[0] = -1;
-                }
-                if (row2 > row1) {
-                    direction[1] = 1;
-                } else {
-                    direction[1] = -1;
-                }
-            }
-
-
-            // paard
-            else if (pieceString.equals("N") && (abs(column2 - column1) == 2 && abs(row2 - row1) == 1 ||
-                    abs(column2 - column1) == 1 && abs(row2 - row1) == 2)){
-
-
-                // verplaats het stuk door veld waar het vandaan kwam leeg te maken, en waar her naartoe gaat een paard te zetten
-                int positionToGo = 8 * (8- row2) + column2;
-                huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position+1);
-                huidigenotatie = huidigenotatie.substring(0, positionToGo) + piece + huidigenotatie.substring(positionToGo+1);
-                createbord(huidigenotatie);
-                index = 1;
-
-            }
-
-            if (indexvariabele == 1) {
-                for (int h = 0; h < countt; h++) {
-                    int element1 = column1 + direction[0] * (h + 1);
-                    int element2 = row1 + direction[1] * (h + 1);
-
-                    int positionn = 8 * (8 - element2) + element1;
-
-                    if (String.valueOf(huidigenotatie.charAt(positionn)).equals("0")) {
-                        index2++;
-
-                    }
-
-                }
-
-                // alle velden leeg
-                if (index2 == countt) {
-                    // move is legaal moet gemaakt worden
-
-                    int column = (int) Character.toLowerCase(character) - 97;
-                    int row = 8 - Integer.parseInt(String.valueOf(zet.charAt(zet.length()-1)));
-                    int counter2 = 8 * row + column;
-
-                    huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position + 1);
-                    huidigenotatie = huidigenotatie.substring(0, counter2) + piece + huidigenotatie.substring(counter2 + 1);
-                    createbord(huidigenotatie);
-                    index = 1;
-                }
-            }
-            i++;
-        }
-        return huidigenotatie;
-    }
-
-
-    public String promotion(String huidigenotatie, String move, String piece, int colour) {
-
-        char character = move.charAt(move.length()-4);
-        int position;
-        int position2;
-        if (colour == 1) {
-
-            position = (int) Character.toLowerCase(character) - 97 + 8*6;
-            position2 = position +8;
-        }
-
-        else{
-            position = (int) Character.toLowerCase(character) - 97 + 8;
-            position2 = position - 8;
-        }
-
-        Log.d("position", String.valueOf(position));
-        huidigenotatie = huidigenotatie.substring(0, position) + '0' + huidigenotatie.substring(position + 1);
-        huidigenotatie = huidigenotatie.substring(0, position2) + piece + huidigenotatie.substring(position2 + 1);
-        createbord(huidigenotatie);
-        return huidigenotatie;
-
-    }
-
-
-    private String castling(String huidigenotatie, int colour, int i) {
-
-        String pieceRook;
-        String pieceKing;
-        int positionRook;
-        int positionRook2;
-        int positionKing;
-        int positionKing2;
-
-        // geeft toren de juiste kleur
-        pieceRook = "t";
-        if (colour == 1) {
-            pieceRook = "r";
-        }
-
-        // geeft koning juiste kleur
-        pieceKing = "l";
-        if (colour == 1) {
-            pieceKing = "k";
-        }
-
-        if (i == 1) {
-            positionRook = 56 * (1 -colour);
-            positionRook2 = 3 + 56 * (1 -colour);
-
-            positionKing = 4 + 56 * (1 -colour);
-            positionKing2 = 2 + 56 * (1 -colour);
-        }
-
-        else {
-            positionRook = 7 + 56 * (1 -colour);
-            positionRook2 = 5 + 56 * (1 -colour);
-
-            positionKing = 4 + 56 * (1 -colour);
-            positionKing2 = 6 + 56 * (1 -colour);
-        }
-
-
-        huidigenotatie = huidigenotatie.substring(0, positionRook) + '0' + huidigenotatie.substring(positionRook + 1);
-        huidigenotatie = huidigenotatie.substring(0, positionKing) + '0' + huidigenotatie.substring(positionKing + 1);
-
-        huidigenotatie = huidigenotatie.substring(0, positionRook2) + pieceRook + huidigenotatie.substring(positionRook2 + 1);
-        huidigenotatie = huidigenotatie.substring(0, positionKing2) + pieceKing + huidigenotatie.substring(positionKing2 + 1);
-
-        createbord(huidigenotatie);
-
-        return huidigenotatie;
-
-    }
 }

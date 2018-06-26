@@ -8,86 +8,98 @@
     tools:context=".ChessExercise">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="54dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.964" />
-
-    <TextView
         android:id="@+id/displayMoves"
-        android:layout_width="107dp"
-        android:layout_height="44dp"
+        android:layout_width="145dp"
+        android:layout_height="160dp"
+        android:layout_marginEnd="8dp"
         android:text=""
+        android:textAlignment="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintEnd_toStartOf="@+id/displayMoves2"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.987" />
+        app:layout_constraintVertical_bias="0.7" />
 
     <TextView
         android:id="@+id/notationStartPostition"
-        android:layout_width="352dp"
-        android:layout_height="141dp"
-        android:text="TextView"
+        android:layout_width="295dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:maxLines="5"
+        android:scrollbars="vertical"
+        android:text=""
+        android:textAlignment="center"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
+        app:layout_constraintVertical_bias="0.425" />
+
+    <TextView
+        android:id="@+id/displayMoves2"
+        android:layout_width="145dp"
+        android:layout_height="160dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:onClick="doezetttt"
+        android:id="@+id/hint"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:background="@drawable/malblue"
+        android:onClick="hintForChessMove"
         android:text="hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.892" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="nieuwe"
-        android:text="nieuwe puzzel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="105dp"
-        android:layout_height="42dp"
-        android:onClick="confirmMove"
-        android:text="bevestig"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.965" />
 
-    <EditText
+    <Button
+        android:id="@+id/newPuzzle"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:background="@drawable/malevichyellow"
+        android:onClick="nieuwe"
+        android:text="new puzzle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:background="@drawable/malevichgreennn"
+        android:onClick="confirmMove"
+        android:text="confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
+
+    <TextView
         android:id="@+id/notationInText"
         android:layout_width="200dp"
         android:layout_height="47dp"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,14 +109,15 @@
         app:layout_constraintVertical_bias="0.817" />
 
     <Button
-        android:id="@+id/button9"
-        android:layout_width="52dp"
-        android:layout_height="43dp"
+        android:id="@+id/showBoard"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:background="@drawable/malevichorange"
         android:onClick="showBoard"
-        android:text="Button"
+        android:text="Show Board"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.965" />
@@ -115,7 +128,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:visibility="visible"
+        android:visibility="gone"
         app:columnCount="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -748,11 +761,23 @@
             app:layout_row="0"
             app:srcCompat="@drawable/whitequeen" />
 
+        <ImageView
+            android:id="@+id/ag"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_column="6"
+            app:layout_row="0"
+            app:srcCompat="@drawable/backspace" />
+
         <TextView
             android:id="@+id/ba"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:elevation="0dp"
+            android:gravity="center"
             android:text="O-O"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="0"
             app:layout_row="1" />
 
@@ -760,7 +785,10 @@
             android:id="@+id/bb"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="="
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="1"
             app:layout_row="1" />
 
@@ -768,7 +796,10 @@
             android:id="@+id/bc"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="O-O-O"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="2"
             app:layout_row="1" />
 
@@ -777,7 +808,10 @@
             android:id="@+id/ca"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="A"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="0"
             app:layout_row="2" />
 
@@ -785,7 +819,10 @@
             android:id="@+id/cb"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="B"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="1"
             app:layout_row="2" />
 
@@ -793,7 +830,10 @@
             android:id="@+id/cc"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="C"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="2"
             app:layout_row="2" />
 
@@ -801,7 +841,10 @@
             android:id="@+id/cd"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="D"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="3"
             app:layout_row="2" />
 
@@ -809,7 +852,10 @@
             android:id="@+id/ce"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="E"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="4"
             app:layout_row="2" />
 
@@ -817,7 +863,10 @@
             android:id="@+id/cf"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="F"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="5"
             app:layout_row="2" />
 
@@ -825,7 +874,10 @@
             android:id="@+id/cg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="G"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="6"
             app:layout_row="2" />
 
@@ -833,7 +885,10 @@
             android:id="@+id/ch"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="H"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="7"
             app:layout_row="2" />
 
@@ -841,7 +896,10 @@
             android:id="@+id/da"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="1"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="0"
             app:layout_row="3" />
 
@@ -849,7 +907,10 @@
             android:id="@+id/db"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="2"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="1"
             app:layout_row="3" />
 
@@ -857,7 +918,10 @@
             android:id="@+id/dc"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="3"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="2"
             app:layout_row="3" />
 
@@ -865,7 +929,10 @@
             android:id="@+id/dd"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="4"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="3"
             app:layout_row="3" />
 
@@ -873,7 +940,10 @@
             android:id="@+id/de"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="5"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="4"
             app:layout_row="3" />
 
@@ -881,7 +951,10 @@
             android:id="@+id/df"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="6"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="5"
             app:layout_row="3" />
 
@@ -889,7 +962,10 @@
             android:id="@+id/dg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="7"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="6"
             app:layout_row="3" />
 
@@ -897,7 +973,10 @@
             android:id="@+id/dh"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:gravity="center"
             android:text="8"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_column="7"
             app:layout_row="3" />
 
