@@ -48,4 +48,6 @@ Ik heb gisteren een tijdje vast gezeten met het aanpassen van de scores in fireb
 # dag 16, 25 juni
 Vandaag ga ik beginnen met het mooi maken van de code en de layout aan passen. Ook zal ik in de puzzel nog een beetje spelen in het laten verschijnen van het bord. Ook de kleur van de aan te klikken stukken zal moeten veranderen indien een opgave voor wit of zwart is.
 
+# dag 17, 26 juni
+Gisteren ben ik begonnen met commenten. Ook heb ik de layout aangepast. Dit is ook waar ik verder mee ga vandaag. Ook probeer ik de laatste kleine bugs eruit te halen.
 
