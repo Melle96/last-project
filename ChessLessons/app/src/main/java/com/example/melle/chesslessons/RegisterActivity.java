@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("sign in", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                addToDB();
+                                addToDB(user);
                                 toMain();
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -77,10 +77,9 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void addToDB() {
+    public void addToDB(FirebaseUser user) {
 
         String UID = "unknown";
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             UID = user.getUid();
         }
