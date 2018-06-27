@@ -36,6 +36,8 @@ In deze activity worden de statistieken gepresenteerd van een gebruiker. Wanneer
 ##### Score.class
 Deze class heeft strings voor correct, wrong en time. Deze waardes kunnen worden aangepast en verkregen.
 
+### activity_chess_exercise
+In deze activity kunnen schaakpuzzels opgelost worden. De activity kent meer dan 1000 regels en verwijst ook nog naar meer dan 400 regels in de ChessExerciseFunctions class. Dit maakt de activity dan ook zeer gecompliceerd. 
 
 
 
