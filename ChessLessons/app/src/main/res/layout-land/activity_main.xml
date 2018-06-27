@@ -29,7 +29,7 @@
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:background="@drawable/malevichyellow"
-        android:onClick="registreer"
+        android:onClick="goToRegister"
         android:text="register"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.961" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/emailUser"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:background="@drawable/whitemalevich"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.368" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/passwordUser"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:background="@drawable/whitemalevich"

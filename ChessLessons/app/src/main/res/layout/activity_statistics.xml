@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/chesspaintinggg"
-    tools:context=".RatingActivity">
+    android:background="@drawable/malevich11"
+    tools:context=".StatisticsActivity">
 
     <TextView
         android:id="@+id/correct"
@@ -15,10 +15,10 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218"
+        app:layout_constraintVertical_bias="0.376"
         android:gravity="center"
         android:textAlignment="center"
         android:textStyle="bold"/>
@@ -31,10 +31,9 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
+        app:layout_constraintVertical_bias="0.542"
         android:gravity="center"
         android:textAlignment="center"
         android:textStyle="bold"/>
@@ -47,11 +46,12 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793"
+        app:layout_constraintVertical_bias="0.708"
         android:gravity="center"
         android:textAlignment="center"
         android:textStyle="bold"/>
+
 </android.support.constraint.ConstraintLayout>
