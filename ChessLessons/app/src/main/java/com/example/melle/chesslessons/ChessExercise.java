@@ -2,10 +2,8 @@ package com.example.melle.chesslessons;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,10 +21,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Character.isUpperCase;
 import static java.lang.Integer.parseInt;
-import static java.lang.StrictMath.abs;
 
+// deze activity maakt het mogelijk schaakpuzzels te krijgen en deze op te lossen
 public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callback , View.OnClickListener {
 
     @Override
@@ -37,14 +34,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         initialiseClickers();
 
     }
-
-//    // initialiseer fen: startpositie schaakbord
-//    String fen = "3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1";
-//
-//    // pgn weergeeft onder andere antwoorden puzzel
-//    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1\"]\r\n\r\n1. Qe7+ Bf7 2. Qxf6+ Kxf6 3. Bd4# \r\n*";
-
-    //{"title":"Exposed","comments":"","url":"https://www.chess.com/forum/view/daily-puzzles/9272010---exposed","publish_time":1285570800,"fen":"r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1\"]\r\n\r\n1...Bxf2+ 2. Kxf2 Qxc3\r\n*","image":"https://www.chess.com/dynboard?fen=r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1%20b%20-%20-%200%201&size=2"}
 
     String fen = "r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1";
     String pgn= "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1\"]\r\n\r\n1...Bxf2+ 2. Kxf2 Qxc3\r\n*";
@@ -807,71 +796,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         showBoard();
     }
 
-//    public void addToDB(Score value) {
-//
-//        String UID = "unknown";
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if (user != null) {
-//            UID = user.getUid();
-//        }
-//
-//        String correct = String.valueOf(Integer.parseInt(value.correct) + 1);
-//        Log.d("jochemXI","");
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("scores");
-//        Score scoreee = new Score(correct,value.wrong, value.time);
-//
-//        myRef.child(UID).setValue(scoreee);
-//    }
-
-        // addListenerForSingleValueEvent(new ValueEventListener()
-//    public void readFromDB(final int time) {
-//        // Read from the database
-//        final int[] index = {0,0};
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if (user != null) {
-//            final String UID = user.getUid();
-//
-//            FirebaseDatabase database = FirebaseDatabase.getInstance();
-//            final DatabaseReference myRef = database.getReference("scores");
-//
-//            myRef.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    Score value = dataSnapshot.child(UID).getValue(Score.class);
-//                    String valueCorrect = String.valueOf(Integer.parseInt(value.correct) + 1);
-//                    String totalTime = String.valueOf(Integer.parseInt(value.time) +
-//                            time);
-//                    Log.d("time", String.valueOf(time));
-//                    Log.d("time_total", String.valueOf(totalTime));
-//
-//                    if (index[0]== 0) {
-//                        try {
-//                            myRef.child(UID).child("correct").setValue(valueCorrect);
-//                            index[0]++;
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    if (index[1]== 0) {
-//                        try {
-//                            myRef.child(UID).child("time").setValue(totalTime);
-//                            index[1]++;
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError error) {
-//                    // Failed to read value
-//                    Log.w("failed", "Failed to read value.", error.toException());
-//                }
-//            });
-//        }
-//    }
 
     // er wordt gelezen van de database, ook wordt deze aangepast
     public void readFromDB(final int time, final String result) {
@@ -1069,7 +993,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 }
             }
 
-
             // als er maar 1 stuk is van bepaalde kleur
             if (counter == 1) {
                 currentNotation = ChessExerciseFunctions.moveSinglePiece(currentNotation, move, String.valueOf(myList.get(0)), piece);
@@ -1084,6 +1007,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         }
 
         createbord(currentNotation);
+
         // notatie wordt teruggegeven
         return currentNotation;
     }
