@@ -51,3 +51,6 @@ Vandaag ga ik beginnen met het mooi maken van de code en de layout aan passen. O
 # dag 17, 26 juni
 Gisteren ben ik begonnen met commenten. Ook heb ik de layout aangepast. Dit is ook waar ik verder mee ga vandaag. Ook probeer ik de laatste kleine bugs eruit te halen.
 
+# dag 18, 27 juni
+Gisteren heb ik de laatse bug eruit gehaald. Hierdoor geeft hij altijd de laatste zet als laatste in de string en niet nog daarna een spatie. Verder heb ik de layout wat verveterd. Hiermee ga ik vandaag nog wat verder. Als laatste wil ik nog een imageview die aangeeft wanneer een opgave meteen goed is, er een fout wordt gemaakt of na een fout nog goed is. Dit zijn de laatste loodjes waarna ik begin met get schrijven van het verslag.
+
