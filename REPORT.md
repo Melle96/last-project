@@ -10,11 +10,6 @@ Allereerst zal er een korte beschrijving van de structuur van de app gegeven wor
 
 Indien de gebuiker inlogt verschijnt het activity_menu. Dit is een menu waarin de gebuiker kan doorschakelen naar een schaakpuzzel, de statistieken of de instructie. In de instructie staat bescheven hoe de schaakpuzzel ingevuld moet worden door de gebruiker met behulp van notatie. Als de gebuiker doorschakelt naar statistieken ziet deze hoeveel puzzels er correct en fout zijn beantwoord. Ook is er weergeven hoeveel minuten een gebruiker aan het maken van de schaakpuzzels heeft besteed. Een schaakpuzzels weergeeft een schaakpuzzel die uiteindelijk goed of fout beantwoord wordt.
 
-
-
-
-
-
-
+# Uitgebreide uitleg werking app
 
 ### activity_main
