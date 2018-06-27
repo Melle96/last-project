@@ -22,4 +22,16 @@ Een andere button die de gebuiker kan indrukken is de register button. Indien di
 ### activity_register
 In deze activity is het mogelijk voor een gebruiker zich te registreren. Er kan een email ingevuld worden met wachtwoord en bevestiging van het wachtwoord. Indien de gebruiker dan op register drukt wordt de functie registerNow aangeroepen. In deze functie worden de mail en wachtwoorden verkregen. Indien de wachtwoorden niet matchen wordt dit aangegeven in een toast. Als de email en/of het wachtwoord(1) niet ingevuld is wordt dit aangegeven in een toast. Anders kan er geprobeerd geregistreerd te worden. Als dit niet lukt wordt er opnieuw een toast gegeven. Als er echter wel een succesvolle registratie is dan wordt er allereerst een database voor de gebuiker gemaakt. Via de functie addToDB(user) wordt correct, wrong en time op nul gezet. Als laatste wordt dan de activity_main geopend.
 
-### activity_register
+### activity_menu
+In deze activity krijgt de gebruiker een overzicht van de activities waarna hij toe kan. Indien de gebuiker klikt op instruction wordt deze genavigeerd naar de activity_instruction. Als de gebruiker klikt op statistics wordt deze genavigeerd naar activity_statistics. Als laatste kan er geklikt worden op puzzle om te navigeren naar activity_chess_exercise.
+
+### activity_instruction
+In deze activity wordt een instructie van notatie gegeven aan de hand van een aantal voorbeelden. Er wordt er hierbij vanuit gegaan dat de gebruiker de notatie al kent. Dit is namelijk bij vrijwel alle gevorderde schakers het geval. 
+
+De notatie is een middel om zetten te communiceren zonder het bord te tekenen. De notatie is onder meer verplicht voor amateurs en profs om te gebruiken tijdens toernooien of andere partijen. De notatie is dus voor deze app erg handig om te gebruiken aangezien het blindschaken geen bord kent en het alom bekend is.
+
+### activity_statistics
+
+
+
+
