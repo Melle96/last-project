@@ -13,3 +13,10 @@ Indien de gebuiker inlogt verschijnt het activity_menu. Dit is een menu waarin d
 # Uitgebreide uitleg werking app
 
 ### activity_main
+
+In deze activity is het de bedoeling voor de gebuiker om in te loggen. De gebuiker kan hier zijn email en bijbehorende wachtwoord invullen.
+Indien er dan op sign in geklikt wordt gebeurd er het volgende. Allereerst wordt via de functie logIn het ingevulde email en wachtwoord verkregen. Indien één van de twee velden leeg is, wordt er een toast gemaakt waarin duidelijk wordt gemaakt aan de gebuiker dat deze velden leeg zijn. Als de velden allebei ingevuld zijn maar email en wachtwoord niet matchen wordt een toast gegeven. Als de velden echter wel matchen dan is de log in succesvol en wordt de activity_menu geopend.
+
+Een andere button die de gebuiker kan indrukken is de register button. Indien dit gebeurd, wordt de gebruiker genavigeerd naar de activity_register.
+
+### activity_register
