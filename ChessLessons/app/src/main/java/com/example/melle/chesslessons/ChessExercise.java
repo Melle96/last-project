@@ -38,11 +38,16 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     }
 
-    // initialiseer fen: startpositie schaakbord
-    String fen = "3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1";
+//    // initialiseer fen: startpositie schaakbord
+//    String fen = "3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1";
+//
+//    // pgn weergeeft onder andere antwoorden puzzel
+//    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1\"]\r\n\r\n1. Qe7+ Bf7 2. Qxf6+ Kxf6 3. Bd4# \r\n*";
 
-    // pgn weergeeft onder andere antwoorden puzzel
-    String pgn = "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/p2q2k1/3P1p1p/2B2Pp1/6P1/4Q2P/b7/4R1K1 w - - 0 1\"]\r\n\r\n1. Qe7+ Bf7 2. Qxf6+ Kxf6 3. Bd4# \r\n*";
+    //{"title":"Exposed","comments":"","url":"https://www.chess.com/forum/view/daily-puzzles/9272010---exposed","publish_time":1285570800,"fen":"r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1\"]\r\n\r\n1...Bxf2+ 2. Kxf2 Qxc3\r\n*","image":"https://www.chess.com/dynboard?fen=r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1%20b%20-%20-%200%201&size=2"}
+
+    String fen = "r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1";
+    String pgn= "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1\"]\r\n\r\n1...Bxf2+ 2. Kxf2 Qxc3\r\n*";
 
     // initialiseren variabelen
     String coordinates;
@@ -51,12 +56,20 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     String chessMoves[];
     long startTime;
     int correctPuzzleIndex;
+    int wrongindex;
 
     // er wordt een schaakpuzzel verkregen
     public void getPuzzleNow() {
 
+        // resultaat leegmaken
+        ImageView img = (ImageView) findViewById(R.id.result);
+        img.setImageResource(0);
+
         // index waarde voor correcte puzzel
         correctPuzzleIndex = 0;
+
+        // een puzzel kan slechts eenmaal fout gerekend worden en niet meerdere malen
+        wrongindex = 0;
         startTime = System.currentTimeMillis();
 
 
@@ -208,41 +221,60 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     public void confirmMove(View view) {
 
         // notatie verkrijgen
-        TextView notation  = (TextView)findViewById(R.id.notationInText);
+        TextView notation = (TextView) findViewById(R.id.notationInText);
         String notationUser = notation.getText().toString();
+        notation.setText("");
 
-        // komt zet overeen met antwoord
-        if (chessMoves[moveIndex].equals(notationUser)) {
-
-
-
-            // kleur aanpassen
-            int colour = ((colourOriginal + moveIndex) % 2);
-            String move = chessMoves[moveIndex];
-
-            changeText(move, colour);
-
-            // coodinaten verkrijgen na schaakzet
-            coordinates = makeChessMove(coordinates, colour, move);
-            moveIndex++;
+        //puzzel nog niet klaar
+        if (correctPuzzleIndex != 3) {
 
 
-            makeChessMove2();
-        }
+            // komt zet overeen met antwoord
+            if (chessMoves[moveIndex].equals(notationUser)) {
 
 
-        else{
-            correctPuzzleIndex++;
-            if (correctPuzzleIndex == 1) {
+                // kleur aanpassen
+                int colour = ((colourOriginal + moveIndex) % 2);
+                String move = chessMoves[moveIndex];
 
-                int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
-                readFromDB(estimatedTime, "wrong");
-                correctPuzzleIndex++;
+                changeText(move, colour);
+
+                // coodinaten verkrijgen na schaakzet
+                coordinates = makeChessMove(coordinates, colour, move);
+                moveIndex++;
+
+
+                makeChessMove2();
+            } else {
+                wrongindex++;
+                correctPuzzleIndex = 1;
+                if (correctPuzzleIndex == 1) {
+
+                    int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
+
+                    // een puzzel kan slechts eenmaal fout gerekend worden
+                    if (wrongindex == 1){
+                        readFromDB(estimatedTime, "wrong");
+                    }
+                    else{
+                        readFromDB(estimatedTime, "none");
+                    }
+
+                    // startime wordt aangepast zodat tijd van fout to eventueel goed wordt gemeten
+                    startTime = System.currentTimeMillis();
+
+                    // resultaat wordt fout gecommuniceerd via rood kruis
+                    ImageView img = (ImageView) findViewById(R.id.result);
+                    img.setImageResource(R.drawable.wrong);
+
+                    correctPuzzleIndex++;
+
+
+                }
+                // puzzel is incorrect
+
+
             }
-            // puzzel is incorrect
-
-
-
         }
 
     }
@@ -276,12 +308,17 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     // tekst van zetten/resultaat puzzel veranderen
     public void changeText(String text, int colour) {
-        if (colour == 0) {
+
+        // de notatie moet ik het juiste vakje geplaatst worden
+
+        // notatie in gebruikers zetvakje
+        if (colour - colourOriginal == 0) {
             TextView view = (TextView) findViewById(R.id.displayMoves);
             text =  view.getText()+ text  +"\r\n";
             view.setText(text);
         }
 
+        // notatie in computers zetvakje
         else {
             TextView view = (TextView) findViewById(R.id.displayMoves2);
             text = view.getText()+ text  + "\r\n";
@@ -368,15 +405,29 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
             // indien geen fout gemaakt
             if (correctPuzzleIndex == 0) {
-                //changeText("Great job!");
+
                 int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
                 readFromDB(estimatedTime, "correct");
-                correctPuzzleIndex =+ 2;
+
+                ImageView img = (ImageView) findViewById(R.id.result);
+                img.setImageResource(R.drawable.correct);
+
+                // breng de index naar getal waar niks mee gebeurd
+                correctPuzzleIndex = 3;
             }
 
             // indien wel een fout gemaakt
-            else if (correctPuzzleIndex == 1){
-                //changeText("Now it's correct");
+            else if (correctPuzzleIndex == 2){
+
+                int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
+                readFromDB(estimatedTime, "none");
+
+                ImageView img = (ImageView) findViewById(R.id.result);
+                img.setImageResource(R.drawable.correctandwrong);
+
+                // breng de index naar getal waar niks mee gebeurd
+                correctPuzzleIndex = 3;
+
             }
         }
 
@@ -390,6 +441,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             coordinates = makeChessMove(coordinates, colour, move);
 
             changeText(move, colour);
+            Log.d("hoi", "hoi");
             moveIndex++;
         }
     }

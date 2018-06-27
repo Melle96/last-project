@@ -26,7 +26,10 @@ Castling: O-O, O-O-O \n\n
         app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473" />
+        app:layout_constraintVertical_bias="0.473"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/imageView3"
@@ -38,8 +41,5 @@ Castling: O-O, O-O-O \n\n
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.495"
-        app:srcCompat="@drawable/fischerblind"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textStyle="bold"/>
+        app:srcCompat="@drawable/fischerblind" />
 </android.support.constraint.ConstraintLayout>

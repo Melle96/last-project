@@ -100,16 +100,16 @@
         android:id="@+id/notationInText"
         android:layout_width="200dp"
         android:layout_height="47dp"
+        android:gravity="center"
         android:hint="move"
+        android:textAlignment="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textStyle="bold"/>
+        app:layout_constraintVertical_bias="0.857" />
 
     <Button
         android:id="@+id/showBoard"
@@ -131,7 +131,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:visibility="gone"
+        android:visibility="visible"
         app:columnCount="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -985,5 +985,16 @@
 
 
     </android.support.v7.widget.GridLayout>
+
+    <ImageView
+        android:id="@+id/result"
+        android:layout_width="107dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.855" />
 
 </android.support.constraint.ConstraintLayout>
