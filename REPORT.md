@@ -31,7 +31,11 @@ In deze activity wordt een instructie van notatie gegeven aan de hand van een aa
 De notatie is een middel om zetten te communiceren zonder het bord te tekenen. De notatie is onder meer verplicht voor amateurs en profs om te gebruiken tijdens toernooien of andere partijen. De notatie is dus voor deze app erg handig om te gebruiken aangezien het blindschaken geen bord kent en het alom bekend is.
 
 ### activity_statistics
-In deze activity worden de statistieken gepresenteerd van een gebruiker.
+In deze activity worden de statistieken gepresenteerd van een gebruiker. Wanneer men de activity ingaat wordt onmiddelijk de functie readFromDB() aangeroepen. In deze functie wordt de user verkregen met bijbehorend id. Vervolgens worden onder deze id de waarden van de Score.class verkregen. Vervolgens wordt via de functie setText een aanpassing gedaan van de textviews. Hierbij wordt de tekst gezet op correcte antwoorden, foute antwoorden en tijd besteed aan puzzels in minuten. Deze gegevens zijn  dus verkegen uit de Score.class met behulp van de database van Firebase.
+
+##### Score.class
+Deze class heeft strings voor correct, wrong en time. Deze waardes kunnen worden aangepast en verkregen.
+
 
 
 
