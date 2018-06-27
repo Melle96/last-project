@@ -20,3 +20,6 @@ Indien er dan op sign in geklikt wordt gebeurd er het volgende. Allereerst wordt
 Een andere button die de gebuiker kan indrukken is de register button. Indien dit gebeurd, wordt de gebruiker genavigeerd naar de activity_register.
 
 ### activity_register
+In deze activity is het mogelijk voor een gebruiker zich te registreren. Er kan een email ingevuld worden met wachtwoord en bevestiging van het wachtwoord. Indien de gebruiker dan op register drukt wordt de functie registerNow aangeroepen. In deze functie worden de mail en wachtwoorden verkregen. Indien de wachtwoorden niet matchen wordt dit aangegeven in een toast. Als de email en/of het wachtwoord(1) niet ingevuld is wordt dit aangegeven in een toast. Anders kan er geprobeerd geregistreerd te worden. Als dit niet lukt wordt er opnieuw een toast gegeven. Als er echter wel een succesvolle registratie is dan wordt er allereerst een database voor de gebuiker gemaakt. Via de functie addToDB(user) wordt correct, wrong en time op nul gezet. Als laatste wordt dan de activity_main geopend.
+
+### activity_register
