@@ -31,7 +31,7 @@ In deze activity wordt een instructie van notatie gegeven aan de hand van een aa
 De notatie is een middel om zetten te communiceren zonder het bord te tekenen. De notatie is onder meer verplicht voor amateurs en profs om te gebruiken tijdens toernooien of andere partijen. De notatie is dus voor deze app erg handig om te gebruiken aangezien het blindschaken geen bord kent en het alom bekend is.
 
 ### activity_statistics
-
+In deze activity worden de statistieken gepresenteerd van een gebruiker.
 
 
 
