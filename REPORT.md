@@ -39,8 +39,13 @@ Deze class heeft strings voor correct, wrong en time. Deze waardes kunnen worden
 ### activity_chess_exercise
 In deze activity kunnen schaakpuzzels opgelost worden. De activity kent meer dan 1000 regels en verwijst ook nog naar meer dan 400 regels in de ChessExerciseFunctions class. Dit maakt de activity dan ook zeer gecompliceerd. 
 
-Wanneer de activity verschijnt wordt allereerst de functie getPuzzleNow aangeroepen. Wanneer deze wordt aangeroepen wordt allereerst het tekstak waarin de de gebruiker de zetten invoert (notationInText) leeg gemaakt. Er is dan alleen een hinttekst te zien namelijk move. Vervolgens wordt er geindexeerd dat de puzzel nog niet correct en fout is maar dat wel nog kan worden. Vervolgens wordt de starttijd bepaald om te meten hoe lang er over de puzzel wordt gedaan.    (gebleven bij regel 61)
+Wanneer de activity verschijnt wordt allereerst de functie getPuzzleNow aangeroepen. Wanneer deze wordt aangeroepen wordt allereerst het tekstak waarin de de gebruiker de zetten invoert (notationInText) leeg gemaakt. Er is dan alleen een hinttekst te zien namelijk move. Vervolgens wordt er geindexeerd dat de puzzel nog niet correct en fout is maar dat wel nog kan worden. Vervolgens wordt de starttijd bepaald om te meten hoe lang er over de puzzel wordt gedaan. Hierna wordt de puzzle verkregen via de class GetPuzzle.
 
+Nu de puzzel verkregen is wordt de fen die in de API zit gesplit in kleur en postitie met fenStringSplit. De fen weergeeft namelijk de beginpositie en de beginkleur van de puzzel. fenToString schrijft fen dan vervolgens naar een string van 64 (= aantal schaakvelden) elementen om voor elke vakje te bepalen welk stuk erin moet staan. 
+
+Functie returnBoardInText gebruikt de fen om de beginstelling van het bord in notatie weer te geven voor TextView notationStartPosition. Ook createbord gebruikt de fen maar ook fenToString om het bord te visualiseren in de beginstelling. Verder worden met changeText2 de TextViews displayMoves en displayMoves2 geïnitialiseerd, changeColourPieceClickers verandert de kleur van de stukken namelijk ImageView aa t/m af. Als laatste wordt de functie obtainChessMoves uit ChessExerciseFunctions class aangeroepen om de zetten uit de pgn van de API te scheiden.
+
+Nu de puzzel verkregen is wordt zet de functie initialiseClickers() klikkers voor de gridlayoutClickers verkregen. De gebruiker kan dan op de schaakstukken, coordinaten, = en rokadenotatie klikken om de TextView notationInText aan te passen. (regel 34)
 
 
 ##### GetPuzzle.class
