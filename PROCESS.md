@@ -54,3 +54,6 @@ Gisteren ben ik begonnen met commenten. Ook heb ik de layout aangepast. Dit is o
 # dag 18, 27 juni
 Gisteren heb ik de laatse bug eruit gehaald. Hierdoor geeft hij altijd de laatste zet als laatste in de string en niet nog daarna een spatie. Verder heb ik de layout wat verveterd. Hiermee ga ik vandaag nog wat verder. Als laatste wil ik nog een imageview die aangeeft wanneer een opgave meteen goed is, er een fout wordt gemaakt of na een fout nog goed is. Dit zijn de laatste loodjes waarna ik begin met get schrijven van het verslag.
 
+# dag 19, 28 juni
+Gisteren heb ik de laatste dingen veranderd aan m'n app. Ook ben ik begonnen met het schrijven van mijn report. Hier ga ik vandaag mee verder.
+
