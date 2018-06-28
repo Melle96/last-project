@@ -51,7 +51,11 @@ Nu de puzzel is verkregen en de gebruiker door middel van klikken zetten kan inv
 
 Als de gebruiker een goed antwoord geeft worden door middel van makeChessMove de coordinaten oftewel de stelling van het bord aangepast. Vervolgens wordt makeChessMove2() toegepast. Deze functie check allereerst of de funtie is opgelost en in één keer goed is geweest. Correct wordt via readFromDB +1 (ook time wordt aangepast) en imageview result wordt groen. Ook kan het zijn dat de puzzel eerst fout was maar nu goed dan wordt alleen de time aangepast en imageview result wordt geel. Voor beide gevallen geldt dat de correctPuzzleIndex = 3, hiermee wordt aangegeven dat de puzzel is afgesloten. Indien makeChessMove2() gebeurd er niks mee. Het laatste dat makeChessMove2() kan doen is een tegenzet indien de puzzel niet klaar is.
 
-Wanneer de button hint wordt aangeklikt wordt makeChessMove2() tweemaal aangeroepen. Er wordt een zet voor de gebruiker en een tegenzet gedaan. Wanneer 
+Wanneer de button hint wordt aangeklikt wordt makeChessMove2() tweemaal aangeroepen. Er wordt een zet voor de gebruiker en een tegenzet gedaan. 
+
+Button new puzzle roept getPuzzleNow() aan.
+
+De laatste button show board laat de gridlayoutBoard verschijnen voor drie seconden. De gridlayoutClickers, notationStartPosition, displayMoves en displayMoves2 verdwijnen voor dezelfde tijdsduur. Dit gebeurd met de functie showBoard() die op zijn beurt disappear, emerge1 en emerge2.
 
 
 ##### GetPuzzle.class
