@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity{
 
         EditText passwordUser = (EditText) findViewById(R.id.passwordUser);
         String password = passwordUser.getText().toString();
-
+//
 //        final String email = "hoi@j.nl";
 //        String password = "qwerty";
 

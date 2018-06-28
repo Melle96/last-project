@@ -26,10 +26,12 @@ import static java.lang.Integer.parseInt;
 // deze activity maakt het mogelijk schaakpuzzels te krijgen en deze op te lossen
 public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callback , View.OnClickListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chess_exercise);
+
         getPuzzleNow();
         initialiseClickers();
 
@@ -37,6 +39,27 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     String fen = "r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1";
     String pgn= "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/5p1p/p1q2p2/1pb4N/8/P1Q2PP1/5P1P/3R2K1 b - - 0 1\"]\r\n\r\n1...Bxf2+ 2. Kxf2 Qxc3\r\n*";
+
+    // schaakpuzzel verkrijgen
+    @Override
+    public void gotChessPuzzle(JSONObject puzzle) {
+        try {
+
+            pgn = puzzle.getString("pgn");
+            fen = puzzle.getString("fen");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // schaakpuzzel verkrijgen
+    @Override
+    public void gotChessPuzzleError(String message)
+    {
+        Log.d("Error", message);
+    }
+
 
     // initialiseren variabelen
     String coordinates;
@@ -47,6 +70,16 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
     int correctPuzzleIndex;
     int wrongindex;
 
+    int puzzleFinished = 3;
+    int puzzleFirstWrongNoworrect = 2;
+    int wrong = 1;
+    int correct = 0;
+
+    int white = 0;
+    int black = 1;
+
+    int ignoreThis = -1;
+
     // er wordt een schaakpuzzel verkregen
     public void getPuzzleNow() {
 
@@ -55,10 +88,10 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         img.setImageResource(0);
 
         // index waarde voor correcte puzzel
-        correctPuzzleIndex = 0;
+        correctPuzzleIndex = correct;
 
         // een puzzel kan slechts eenmaal fout gerekend worden en niet meerdere malen
-        wrongindex = 0;
+        wrongindex = correct;
         startTime = System.currentTimeMillis();
 
 
@@ -82,9 +115,10 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         createbord(coordinates);
 
         moveIndex = 0;
-        colourOriginal = 1;
+
+        colourOriginal = black;
         if (fenStringAndColour[1].equals("w")) {
-            colourOriginal = 0;
+            colourOriginal = white;
         }
 
         // textvak met tegenzetten / resultaat vorige puzzel leegmaken
@@ -215,7 +249,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         notation.setText("");
 
         //puzzel nog niet klaar
-        if (correctPuzzleIndex != 3) {
+        if (correctPuzzleIndex != puzzleFinished) {
 
 
             // komt zet overeen met antwoord
@@ -236,13 +270,13 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 makeChessMove2();
             } else {
                 wrongindex++;
-                correctPuzzleIndex = 1;
-                if (correctPuzzleIndex == 1) {
+                correctPuzzleIndex = wrong;
+                if (correctPuzzleIndex == wrong) {
 
                     int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
 
                     // een puzzel kan slechts eenmaal fout gerekend worden
-                    if (wrongindex == 1){
+                    if (wrongindex == wrong){
                         readFromDB(estimatedTime, "wrong");
                     }
                     else{
@@ -256,7 +290,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                     ImageView img = (ImageView) findViewById(R.id.result);
                     img.setImageResource(R.drawable.wrong);
 
-                    correctPuzzleIndex++;
+                    correctPuzzleIndex = puzzleFirstWrongNoworrect;
 
 
                 }
@@ -273,27 +307,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
         getPuzzleNow();
     }
-
-    // schaakpuzzel verkrijgen
-    @Override
-    public void gotChessPuzzle(JSONObject puzzle) {
-        try {
-
-            pgn = puzzle.getString("pgn");
-            fen = puzzle.getString("fen");
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // schaakpuzzel verkrijgen
-    @Override
-    public void gotChessPuzzleError(String message)
-    {
-        Log.d("Error", message);
-    }
-
 
     // tekst van zetten/resultaat puzzel veranderen
     public void changeText(String text, int colour) {
@@ -317,7 +330,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
     // tekst van zetten/resultaat leegmaken
     public void changeText2(int colourOriginal) {
-        if (colourOriginal == 0) {
+        if (colourOriginal == white) {
             TextView view = (TextView) findViewById(R.id.displayMoves);
             String text = "white (you)" + "\r\n";
             view.setText(text);
@@ -393,7 +406,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         if (moveIndex == chessMoves.length) {
 
             // indien geen fout gemaakt
-            if (correctPuzzleIndex == 0) {
+            if (correctPuzzleIndex == correct) {
 
                 int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
                 readFromDB(estimatedTime, "correct");
@@ -402,11 +415,11 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 img.setImageResource(R.drawable.correct);
 
                 // breng de index naar getal waar niks mee gebeurd
-                correctPuzzleIndex = 3;
+                correctPuzzleIndex = puzzleFinished;
             }
 
             // indien wel een fout gemaakt
-            else if (correctPuzzleIndex == 2){
+            else if (correctPuzzleIndex == puzzleFirstWrongNoworrect){
 
                 int estimatedTime = (int) (System.currentTimeMillis() - startTime) / 1000;
                 readFromDB(estimatedTime, "none");
@@ -415,7 +428,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
                 img.setImageResource(R.drawable.correctandwrong);
 
                 // breng de index naar getal waar niks mee gebeurd
-                correctPuzzleIndex = 3;
+                correctPuzzleIndex = puzzleFinished;
 
             }
         }
@@ -430,7 +443,6 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             coordinates = makeChessMove(coordinates, colour, move);
 
             changeText(move, colour);
-            Log.d("hoi", "hoi");
             moveIndex++;
         }
     }
@@ -733,7 +745,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             ImageView img = (ImageView) findViewById(ID);
 
             // verander de stukken naar wit
-            if (colour == 0){
+            if (colour == white){
                 switch (ID) {
 
                     case R.id.aa:
@@ -758,7 +770,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
             }
 
             // verander de stukken naar zwart
-            else if (colour == 1){
+            else if (colour == black){
                 switch (ID) {
 
                     case R.id.aa:
@@ -876,7 +888,7 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
         // kijken of er een promotie is:
         if (move.length() > 3 && String.valueOf(move.charAt(3)).equals("=")) {
             pieceSort = move.charAt(4);
-            counter = -1;
+            counter = ignoreThis;
         }
 
         String piece;
@@ -885,21 +897,21 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
             // / geeft loper de juiste kleur
             piece = "c";
-            if (colour == 1) {
+            if (colour == black) {
                 piece = "b";
             }
         } else if (String.valueOf(pieceSort).equals("R")) {
 
             // geeft toren de juiste kleur
             piece = "t";
-            if (colour == 1) {
+            if (colour == black) {
                 piece = "r";
             }
         } else if (String.valueOf(pieceSort).equals("Q")) {
 
             // geeft dame de juiste kleur
             piece = "s";
-            if (colour == 1) {
+            if (colour == black) {
                 piece = "q";
             }
         } else if (String.valueOf(pieceSort).equals("P")) {
@@ -913,20 +925,20 @@ public class ChessExercise extends AppCompatActivity implements GetPuzzle.Callba
 
             // geeft paard juiste kleur
             piece = "m";
-            if (colour == 1) {
+            if (colour == black) {
                 piece = "n";
             }
         } else {
 
             // geeft koning juiste kleur
             piece = "l";
-            if (colour == 1) {
+            if (colour == black) {
                 piece = "k";
             }
         }
 
         // promotie of rokade
-        if (counter == -1 || String.valueOf(move.charAt(0)).equals("O")) {
+        if (counter == ignoreThis || String.valueOf(move.charAt(0)).equals("O")) {
 
             // voer promotie uit
             if (move.length() > 3 && String.valueOf(move.charAt(move.length() - 2)).equals("=")) {
