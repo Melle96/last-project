@@ -68,8 +68,10 @@ In deze class wordt er vanaf https://api.chess.com/pub/puzzle/random een api ver
 ## Uitdaging
 De grootste uitdaging van deze app is het vertalen van de zetten in korte notatie naar het bord. Indien er bijvoorbeeld een zet wordt gegeven als Be4 oftwel de loper moet naar veld e4 dan is het nog niet duidelijk waar de loper precies vandaan komt. Hierdoor is het noodzakelijk over het bord te itereren, hierbij alle lopers te selecteren en vervolgens de loper die naar dat veld kan te laten verdwijnen en te laten verschijnen op veld e4. Hierbij is het zodanig gecodeerd dat een loper niet door andere stukken heen kan (velden bestemming en vertrekpunt zijn leeg) ook mag deze alleen schuin vewegen. Dit moet voor alle stukken gedaan worden en heeft heel veel tijd gekost. Ik heb hier echter wel veel van geleerd aangezien het ontzettend veel structuur eist om dit efficiënt en goed te programmeren.
 
+## Ontwikkeling
+De veranderingen die ik heb gemaakt zijn als volgt. Allereerst is er in het menuveld een extra button gekomen. Deze button navigeert de gebruiker naar de instructie. Ten tweede is de activity_statistics wat aangepast. De gegevens die weergeven worden zijn namelijk aantal correct aantal fout en totale tijd besteed. Als laatste is de activity_chess_exercise veel mooier en uitgebreider dan in de design.md beschreven. Als laatste heb ik geen highscore voor gebruikers toegevoegd.
 
-
-
+# Verdediging beslissingen
+De reden dat ik geen highscore heb toegevoegd is omdat dit me te veel tijd kostte. Ik heb namelijk der mate veel tijd besteed aan het maken van de schaakpuzzel en vooral het uitvoeren/leesbaar maken  van zetten om het bord te visualiseren dat het me niet gelukt is. Verder vind ik het positief om een instructie te maken voor de app. Als laatstedenk ik dat goed en fout meer overzichtelijk is dan totaal en percentage goed in activity_statistics.
 
 
