@@ -63,6 +63,13 @@ In deze class wordt er vanaf https://api.chess.com/pub/puzzle/random een api ver
 
 {"title":"An Eye For An Eye","url":"https://www.chess.com/forum/view/daily-puzzles/6-30-2017-an-eye-for-an-eye","publish_time":1498806000,"fen":"6k1/r6p/pp1p2p1/2pP2q1/P1Pb4/4B3/1P1Q2PP/5RK1 w - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/r6p/pp1p2p1/2pP2q1/P1Pb4/4B3/1P1Q2PP/5RK1 w - - 0 1\"]\r\n\r\n1. Qxd4 cxd4 2. Bxg5\r\n*","image":"https://www.chess.com/dynboard?fen=6k1/r6p/pp1p2p1/2pP2q1/P1Pb4/4B3/1P1Q2PP/5RK1%20w%20-%20-%200%201&size=2"}.
 
-# uitdagingen gedurende ontwikkeling app
+# Uitdagingen/ontwikkelingen gedurende ontwikkeling app
+
+## Uitdaging
+De grootste uitdaging van deze app is het vertalen van de zetten in korte notatie naar het bord. Indien er bijvoorbeeld een zet wordt gegeven als Be4 oftwel de loper moet naar veld e4 dan is het nog niet duidelijk waar de loper precies vandaan komt. Hierdoor is het noodzakelijk over het bord te itereren, hierbij alle lopers te selecteren en vervolgens de loper die naar dat veld kan te laten verdwijnen en te laten verschijnen op veld e4. Hierbij is het zodanig gecodeerd dat een loper niet door andere stukken heen kan (velden bestemming en vertrekpunt zijn leeg) ook mag deze alleen schuin vewegen. Dit moet voor alle stukken gedaan worden en heeft heel veel tijd gekost. Ik heb hier echter wel veel van geleerd aangezien het ontzettend veel structuur eist om dit efficiënt en goed te programmeren.
+
+
+
+
 
 
