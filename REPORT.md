@@ -45,7 +45,13 @@ Nu de puzzel verkregen is wordt de fen die in de API zit gesplit in kleur en pos
 
 Functie returnBoardInText gebruikt de fen om de beginstelling van het bord in notatie weer te geven voor TextView notationStartPosition. Ook createbord gebruikt de fen maar ook fenToString om het bord te visualiseren in de beginstelling. Verder worden met changeText2 de TextViews displayMoves en displayMoves2 geïnitialiseerd, changeColourPieceClickers verandert de kleur van de stukken namelijk ImageView aa t/m af. Als laatste wordt de functie obtainChessMoves uit ChessExerciseFunctions class aangeroepen om de zetten uit de pgn van de API te scheiden.
 
-Nu de puzzel verkregen is wordt zet de functie initialiseClickers() klikkers voor de gridlayoutClickers verkregen. De gebruiker kan dan op de schaakstukken, coordinaten, = en rokadenotatie klikken om de TextView notationInText aan te passen. (regel 34)
+Nu de puzzel verkregen is wordt zet de functie initialiseClickers() klikkers voor de gridlayoutClickers verkregen. De gebruiker kan dan op de schaakstukken, coordinaten, = en rokadenotatie klikken om de TextView notationInText aan te passen. Zo komt er in notationText een P te staan indien op pion geklikt wordt. 
+
+Nu de puzzel is verkregen en de gebruiker door middel van klikken zetten kan invullen in notationInText wordt de confirm button belangrijk. Indien de gebruiker op confirm klikt wordt in confirmMove(View view) gecheckt of de door de gebruiker ingevulde zet gelijk is aan het antwoord. Als dit niet zo is wordt met de functie readFromDB de tijd van de puzzel opgeteld in firebase ook wrong gaat één omhoog. Merk op dat per puzzel er maar slechts éénmaal wrong=+1 gerekend kan worden. Vervolgens verandert de imageview result in rood. 
+
+Als de gebruiker een goed antwoord geeft worden door middel van makeChessMove de coordinaten oftewel de stelling van het bord aangepast. Vervolgens wordt makeChessMove2() toegepast. Deze functie check allereerst of de funtie is opgelost en in één keer goed is geweest. Correct wordt via readFromDB +1 (ook time wordt aangepast) en imageview result wordt groen. Ook kan het zijn dat de puzzel eerst fout was maar nu goed dan wordt alleen de time aangepast en imageview result wordt geel. Voor beide gevallen geldt dat de correctPuzzleIndex = 3, hiermee wordt aangegeven dat de puzzel is afgesloten. Indien makeChessMove2() gebeurd er niks mee. Het laatste dat makeChessMove2() kan doen is een tegenzet indien de puzzel niet klaar is.
+
+Wanneer de button hint wordt aangeklikt wordt makeChessMove2() tweemaal aangeroepen. Er wordt een zet voor de gebruiker en een tegenzet gedaan. Wanneer 
 
 
 ##### GetPuzzle.class
