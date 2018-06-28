@@ -55,10 +55,14 @@ Wanneer de button hint wordt aangeklikt wordt makeChessMove2() tweemaal aangeroe
 
 Button new puzzle roept getPuzzleNow() aan.
 
-De laatste button show board laat de gridlayoutBoard verschijnen voor drie seconden. De gridlayoutClickers, notationStartPosition, displayMoves en displayMoves2 verdwijnen voor dezelfde tijdsduur. Dit gebeurd met de functie showBoard() die op zijn beurt disappear, emerge1 en emerge2.
+De laatste button show board laat de gridlayoutBoard verschijnen voor drie seconden. De gridlayoutClickers, notationStartPosition, displayMoves en displayMoves2 verdwijnen voor dezelfde tijdsduur. Dit gebeurd met de functie showBoard() die op zijn beurt disappear, emerge1 en emerge2 aanroept.
 
 
 ##### GetPuzzle.class
 In deze class wordt er vanaf https://api.chess.com/pub/puzzle/random een api verkregen. Deze structuur van api ziet er als volgt uit: 
 
 {"title":"An Eye For An Eye","url":"https://www.chess.com/forum/view/daily-puzzles/6-30-2017-an-eye-for-an-eye","publish_time":1498806000,"fen":"6k1/r6p/pp1p2p1/2pP2q1/P1Pb4/4B3/1P1Q2PP/5RK1 w - - 0 1","pgn":"[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/r6p/pp1p2p1/2pP2q1/P1Pb4/4B3/1P1Q2PP/5RK1 w - - 0 1\"]\r\n\r\n1. Qxd4 cxd4 2. Bxg5\r\n*","image":"https://www.chess.com/dynboard?fen=6k1/r6p/pp1p2p1/2pP2q1/P1Pb4/4B3/1P1Q2PP/5RK1%20w%20-%20-%200%201&size=2"}.
+
+# uitdagingen gedurende ontwikkeling app
+
+
