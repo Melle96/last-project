@@ -9,6 +9,9 @@ Deze app is gemaakt door Melle Gelok.
 ## Copyright
 Zie license
 
+## Link naar filmje
+https://www.youtube.com/watch?v=1-hTcvtX750
+
 ## Plaatjes
 ![blindfoldchess_1](https://user-images.githubusercontent.com/36193067/42031384-66500518-7ad6-11e8-91f0-025161015229.png)
 ![blindfoldchess_2](https://user-images.githubusercontent.com/36193067/42031385-666bd108-7ad6-11e8-8516-8b6a8d34e8d0.png)
